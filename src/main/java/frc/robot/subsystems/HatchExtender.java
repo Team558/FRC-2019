@@ -13,9 +13,9 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  * Add your docs here.
  */
-public class HatchGrabber extends Subsystem {
+public class HatchExtender extends Subsystem {
 
-  DoubleSolenoid duckBill = new DoubleSolenoid(0, 1);
+  DoubleSolenoid quackLauncher = new DoubleSolenoid(2, 3);
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
