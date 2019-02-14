@@ -8,6 +8,7 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -16,6 +17,13 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class HatchExtender extends Subsystem {
 
   DoubleSolenoid quackLauncher = new DoubleSolenoid(2, 3);
+
+  public void fireQuackLauncher(){
+    quackLauncher.set(Value.kForward);
+  }
+  public void retractQuackLauncher(){
+    quackLauncher.set(Value.kReverse);
+  }
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
