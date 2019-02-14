@@ -22,14 +22,22 @@ public class Drivetrain extends Subsystem {
 
   TalonSRX leftFollower1 = new TalonSRX(1);
   TalonSRX leftFollower2 = new TalonSRX(2);
-  TalonSRX rightFollower = new TalonSRX(13);
+  TalonSRX rightFollower1 = new TalonSRX(13);
   TalonSRX rightFollower2 = new TalonSRX(14);
 
-  public void SetMotors (double LeftPower, double RightPower){
+  public Drivetrain(){
+
+    leftFollower1.follow(leftLeader);
+    leftFollower2.follow(leftLeader);
+
+    rightFollower1.follow(rightLeader);
+    rightFollower2.follow(rightLeader);
+
+  }
+
+  public void drive(double LeftPower, double RightPower){
     leftLeader.set(ControlMode.PercentOutput, LeftPower);
     rightLeader.set(ControlMode.PercentOutput, RightPower);
-
-    
   }
   public void setRampRate(){
     leftLeader.configOpenloopRamp(.4);
