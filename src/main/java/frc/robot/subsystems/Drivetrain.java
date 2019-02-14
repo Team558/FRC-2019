@@ -7,6 +7,7 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -24,6 +25,16 @@ public class Drivetrain extends Subsystem {
   TalonSRX rightFollower = new TalonSRX(13);
   TalonSRX rightFollower2 = new TalonSRX(14);
 
+  public void SetMotors (double LeftPower, double RightPower){
+    leftLeader.set(ControlMode.PercentOutput, LeftPower);
+    rightLeader.set(ControlMode.PercentOutput, RightPower);
+
+    
+  }
+  public void setRampRate(){
+    leftLeader.configOpenloopRamp(.4);
+    rightLeader.configOpenloopRamp(.4);
+  }
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
