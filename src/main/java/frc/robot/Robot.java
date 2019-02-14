@@ -11,11 +11,18 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import frc.robot.subsystems.*;
 
 
 
 public class Robot extends TimedRobot {
   public static OI m_oi;
+  public static CargoIntake cargoIntake = new CargoIntake();
+  public static Drivetrain driveTrain = new Drivetrain();
+  public static Climber climber = new Climber();
+  public static Elevator elevator = new Elevator();
+  public static HatchExtender hatchExtender = new HatchExtender();
+  public static HatchGrabber hatchGrabber = new HatchGrabber();
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
