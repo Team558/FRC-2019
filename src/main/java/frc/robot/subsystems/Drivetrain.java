@@ -7,12 +7,23 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
  * Add your docs here.
  */
 public class Drivetrain extends Subsystem {
+
+  TalonSRX leftLeader = new TalonSRX(16);
+  TalonSRX rightLeader = new TalonSRX(15);
+
+  TalonSRX leftFollower1 = new TalonSRX(1);
+  TalonSRX leftFollower2 = new TalonSRX(2);
+  TalonSRX rightFollower = new TalonSRX(13);
+  TalonSRX rightFollower2 = new TalonSRX(14);
+
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 

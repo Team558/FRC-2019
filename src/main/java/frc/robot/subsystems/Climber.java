@@ -7,12 +7,17 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
  * Add your docs here.
  */
 public class Climber extends Subsystem {
+
+  TalonSRX climberLeader = new TalonSRX(3);
+  TalonSRX climberFollower = new TalonSRX(12);
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
