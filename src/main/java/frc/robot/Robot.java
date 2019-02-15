@@ -18,7 +18,7 @@ import frc.robot.subsystems.*;
 public class Robot extends TimedRobot {
   public static OI m_oi;
   public static CargoIntake cargoIntake = new CargoIntake();
-  public static Drivetrain driveTrain = new Drivetrain();
+  public static Drivetrain drivetrain = new Drivetrain();
   public static Climber climber = new Climber();
   public static Elevator elevator = new Elevator();
   public static HatchExtender hatchExtender = new HatchExtender();
