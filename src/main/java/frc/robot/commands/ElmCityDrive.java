@@ -15,7 +15,6 @@ import frc.robot.util.*;
 public class ElmCityDrive extends Command {
   private double oldWheel = 0.0;
   private double quickStopAccumulator;
-  private double throttleDeadband = 0.01;
   private double wheelDeadband = 0.07;
 
   public ElmCityDrive() {
@@ -35,7 +34,7 @@ public class ElmCityDrive extends Command {
       double wheelNonLinearity;
 
       double wheel = handleDeadband(Robot.m_oi.GetTurn(), wheelDeadband);
-      double throttle = handleDeadband(Robot.m_oi.GetThrottle(), throttleDeadband);
+      double throttle = Robot.m_oi.GetThrottle();
 
       double negInertia = wheel - oldWheel;
       oldWheel = wheel;

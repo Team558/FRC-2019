@@ -16,12 +16,6 @@ public class OI {
     XboxController DriveJoystick = new XboxController(0);
     XboxController operatorStick = new XboxController(1);
 
-    public double leftSideJoystick(){
-        return DriveJoystick.getRawAxis(1);
-    } 
-    public double rightSideJoystick(){
-        return DriveJoystick.getRawAxis(5);
-    }
     public OI(){
         JoystickButton DuckBillToggle = new JoystickButton(DriveJoystick, 1);
         DuckBillToggle.toggleWhenPressed(new FireHatchGrabber());
@@ -39,7 +33,6 @@ public class OI {
 			double reverse = DriveJoystick.getRawAxis(RobotMap.throttleForwardAxis);
 		   	double forward = DriveJoystick.getRawAxis(RobotMap.throttleReverseAxis);
 
-	//***This might be a redundant deadband or the elm city command might be**//
 		    	
 		    	if ((reverse > .1) && (forward >.1)){
 		    		return 0;

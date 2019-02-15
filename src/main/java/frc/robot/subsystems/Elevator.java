@@ -11,15 +11,14 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-/**
- * Add your docs here.
- */
+
+
 public class Elevator extends Subsystem {
 
   TalonSRX elevatorLeader = new TalonSRX(4);
   TalonSRX elevatorFollower = new TalonSRX(5);
-  // Put methods for controlling this subsystem
-  // here. Call these from Commands.
+
+
 
   @Override
   public void initDefaultCommand() {

@@ -11,15 +11,14 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-/**
- * Add your docs here.
- */
+
+
 public class CargoIntake extends Subsystem {
 
   TalonSRX cargoLeader = new TalonSRX(6);
   TalonSRX cargoFollower = new TalonSRX(7);
-  // Put methods for controlling this subsystem
-  // here. Call these from Commands.
+  
+
 
   @Override
   public void initDefaultCommand() {

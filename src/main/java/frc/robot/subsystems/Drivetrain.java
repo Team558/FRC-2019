@@ -13,9 +13,8 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.commands.ElmCityDrive;
 
-/**
- * Add your docs here.
- */
+
+
 public class Drivetrain extends Subsystem {
 
   TalonSRX leftLeader = new TalonSRX(16);
@@ -36,17 +35,17 @@ public class Drivetrain extends Subsystem {
 
   }
 
-  public void drive(double LeftPower, double RightPower){
-    leftLeader.set(ControlMode.PercentOutput, LeftPower);
-    rightLeader.set(ControlMode.PercentOutput, RightPower);
+  public void drive(double leftPower, double rightPower){
+    leftLeader.set(ControlMode.PercentOutput, leftPower);
+    rightLeader.set(ControlMode.PercentOutput, rightPower);
   }
   public void setRampRate(){
     leftLeader.configOpenloopRamp(.4);
     rightLeader.configOpenloopRamp(.4);
   }
-  // Put methods for controlling this subsystem
-  // here. Call these from Commands.
 
+
+  
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.

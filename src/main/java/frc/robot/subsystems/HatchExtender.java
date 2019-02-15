@@ -11,9 +11,8 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-/**
- * Add your docs here.
- */
+
+
 public class HatchExtender extends Subsystem {
 
   DoubleSolenoid quackLauncher = new DoubleSolenoid(2, 3);
@@ -24,9 +23,9 @@ public class HatchExtender extends Subsystem {
   public void retractQuackLauncher(){
     quackLauncher.set(Value.kReverse);
   }
-  // Put methods for controlling this subsystem
-  // here. Call these from Commands.
 
+
+  
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
