@@ -48,9 +48,18 @@ public class Drivetrain extends Subsystem {
     leftLeader.configOpenloopRamp(.4);
     rightLeader.configOpenloopRamp(.4);
   }
+  public double readLeftEncoder(){
 
+    return leftLeader.getSelectedSensorPosition(0);
 
-  
+  }
+
+  public double readRightEncoder(){
+
+    return rightLeader.getSelectedSensorPosition(0);
+
+  }
+
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
