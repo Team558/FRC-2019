@@ -15,6 +15,22 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Elevator extends Subsystem {
 
+//Stuff for Nate vvvv ///
+
+  //---Home Position---//
+  //Need variable for home position
+
+  //---Hatch Positions---//
+  //Need variables for hatch position
+
+
+  //---Cargo Positions---//
+  //Need variables for cargo positions
+
+  //---Soft Limit Positions---//
+  //Need variables for top and bottom soft limits
+
+
   TalonSRX elevatorLeader = new TalonSRX(4);
   TalonSRX elevatorFollower = new TalonSRX(5);
 
