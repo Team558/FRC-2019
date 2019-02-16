@@ -9,6 +9,7 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.commands.ElmCityDrive;
@@ -33,13 +34,16 @@ public class Drivetrain extends Subsystem {
     rightFollower1.follow(rightLeader);
     rightFollower2.follow(rightLeader);
 
-    //leftLeader.configSelectedFeedbackSensor();
-  }
+    leftLeader.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 0);
+    rightLeader.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 0);
+
+  } 
 
   public void drive(double leftPower, double rightPower){
     leftLeader.set(ControlMode.PercentOutput, leftPower);
     rightLeader.set(ControlMode.PercentOutput, rightPower);
   }
+  
   public void setRampRate(){
     leftLeader.configOpenloopRamp(.4);
     rightLeader.configOpenloopRamp(.4);
