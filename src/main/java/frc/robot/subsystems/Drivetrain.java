@@ -33,6 +33,7 @@ public class Drivetrain extends Subsystem {
     rightFollower1.follow(rightLeader);
     rightFollower2.follow(rightLeader);
 
+    //leftLeader.configSelectedFeedbackSensor();
   }
 
   public void drive(double leftPower, double rightPower){
