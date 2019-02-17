@@ -8,6 +8,7 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -25,8 +26,7 @@ public class Elevator extends Subsystem {
   public Elevator(){
 
     elevatorFollower.follow(elevatorLeader);
-
-
+    elevatorLeader.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Absolute, 0, 0);
   }
 
   @Override
