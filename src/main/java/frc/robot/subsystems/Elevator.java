@@ -18,7 +18,16 @@ public class Elevator extends Subsystem {
   TalonSRX elevatorLeader = new TalonSRX(4);
   TalonSRX elevatorFollower = new TalonSRX(5);
 
+  //Slots # gains
+  public final static int ELEVATOR_UP = 0;
+  public final static int ELEVATOR_DOWN = 1;
 
+  public Elevator(){
+
+    elevatorFollower.follow(elevatorLeader);
+
+
+  }
 
   @Override
   public void initDefaultCommand() {
