@@ -8,6 +8,7 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -26,7 +27,26 @@ public class Elevator extends Subsystem {
   public Elevator(){
 
     elevatorFollower.follow(elevatorLeader);
+    elevatorLeader.set(ControlMode.MotionMagic, 0);
     elevatorLeader.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Absolute, 0, 0);
+
+    elevatorLeader.configMotionAcceleration(0, 0);
+    elevatorLeader.configMotionCruiseVelocity(0, 0);
+
+    // for the elevator going up
+    elevatorLeader.selectProfileSlot(ELEVATOR_UP, 0);
+    elevatorLeader.config_kF(0, 0, 0);
+    elevatorLeader.config_kP(0, 0, 0);
+    elevatorLeader.config_kI(0, 0, 0);
+    elevatorLeader.config_kD(0, 0, 0);
+
+    //for the elevator going down cause of mass*gravity
+    elevatorLeader.selectProfileSlot(ELEVATOR_DOWN, 0);
+    elevatorLeader.config_kF(0, 0, 0);
+    elevatorLeader.config_kP(0, 0, 0);
+    elevatorLeader.config_kI(0, 0, 0);
+    elevatorLeader.config_kD(0, 0, 0);
+
   }
 
   @Override
