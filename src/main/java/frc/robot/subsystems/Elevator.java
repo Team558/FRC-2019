@@ -58,10 +58,10 @@ public class Elevator extends Subsystem {
 
     //for the elevator going down cause of mass*gravity
     elevatorLeader.selectProfileSlot(ELEVATOR_DOWN, 0);
-    elevatorLeader.config_kF(0, 0, 0);
-    elevatorLeader.config_kP(0, 0, 0);
-    elevatorLeader.config_kI(0, 0, 0);
-    elevatorLeader.config_kD(0, 0, 0);
+    elevatorLeader.config_kF(1, 0, 0);
+    elevatorLeader.config_kP(1, 0, 0);
+    elevatorLeader.config_kI(1, 0, 0);
+    elevatorLeader.config_kD(1, 0, 0);
 
   }
 
