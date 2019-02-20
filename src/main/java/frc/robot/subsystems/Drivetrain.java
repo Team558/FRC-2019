@@ -20,13 +20,13 @@ import frc.robot.commands.ElmCityDrive;
 
 public class Drivetrain extends Subsystem {
 
-  TalonSRX leftLeader = new TalonSRX(16);
-  TalonSRX rightLeader = new TalonSRX(15);
+  TalonSRX leftLeader = new TalonSRX(15);
+  TalonSRX rightLeader = new TalonSRX(2);
 
-  VictorSPX leftFollower1 = new VictorSPX(1);
-  VictorSPX leftFollower2 = new VictorSPX(2);
-  VictorSPX rightFollower1 = new VictorSPX(13);
-  VictorSPX rightFollower2 = new VictorSPX(14);
+  VictorSPX leftFollower1 = new VictorSPX(14);
+  VictorSPX leftFollower2 = new VictorSPX(13);
+  VictorSPX rightFollower1 = new VictorSPX(1);
+  VictorSPX rightFollower2 = new VictorSPX(16);
 
   public Drivetrain(){
 
@@ -35,6 +35,11 @@ public class Drivetrain extends Subsystem {
 
     rightFollower1.follow(rightLeader);
     rightFollower2.follow(rightLeader);
+
+    rightLeader.setInverted(true);
+    rightFollower1.setInverted(true);
+    rightFollower2.setInverted(true);
+
 
     leftLeader.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 0);
     rightLeader.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 0);
@@ -52,13 +57,13 @@ public class Drivetrain extends Subsystem {
   }
   public double readLeftEncoder(){
 
-    return leftLeader.getSelectedSensorPosition(0);
+    return leftLeader.getSelectedSensorPosition();
 
   }
 
   public double readRightEncoder(){
 
-    return rightLeader.getSelectedSensorPosition(0);
+    return rightLeader.getSelectedSensorPosition();
 
   }
 
