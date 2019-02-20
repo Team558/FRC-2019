@@ -7,13 +7,12 @@
 
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-
-
+import frc.robot.commands.RunElevatorManual;
 
 public class Elevator extends Subsystem {
 
@@ -33,8 +32,8 @@ public class Elevator extends Subsystem {
   //Need variables for top and bottom soft limits
 
 
-  TalonSRX elevatorLeader = new TalonSRX(4);
-  TalonSRX elevatorFollower = new TalonSRX(5);
+  TalonSRX elevatorLeader = new TalonSRX(6);
+  TalonSRX elevatorFollower = new TalonSRX(7);
 
   //Slots # gains
   public final static int ELEVATOR_UP = 0;
@@ -43,7 +42,7 @@ public class Elevator extends Subsystem {
   public Elevator(){
 
     elevatorFollower.follow(elevatorLeader);
-    elevatorLeader.set(ControlMode.MotionMagic, 0);
+    //elevatorLeader.set(ControlMode.MotionMagic, 0);
     elevatorLeader.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Absolute, 0, 0);
 
     elevatorLeader.configMotionAcceleration(0, 0);
@@ -68,6 +67,15 @@ public class Elevator extends Subsystem {
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
+    setDefaultCommand(new RunElevatorManual());
   }
+
+public void DriveElevator(double output){
+  elevatorLeader.set(ControlMode.PercentOutput, output);
+}
+
+public double GetElevatorEncoder(){
+  return elevatorLeader.getSelectedSensorPosition();
+}
+
 }

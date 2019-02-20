@@ -7,6 +7,7 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.*;
@@ -21,7 +22,12 @@ public class OI {
         DuckBillToggle.toggleWhenPressed(new FireHatchGrabber());
     
         JoystickButton QuackLauncherToggle = new JoystickButton(DriveJoystick, 2);
-        QuackLauncherToggle.toggleWhenPressed(new FireHatchExtender());
+		QuackLauncherToggle.toggleWhenPressed(new FireHatchExtender());
+		
+		JoystickButton cargoIntakeIn = new JoystickButton(operatorStick, 3);
+		cargoIntakeIn.toggleWhenPressed(new CargoIntakeIn());
+		JoystickButton cargoIntakeOut = new JoystickButton(operatorStick, 4);
+		cargoIntakeOut.toggleWhenPressed(new CargoIntakeOut());
     }
     
     //Elm City Drive OI Methods
@@ -38,9 +44,9 @@ public class OI {
 		    		return 0;
 		    	}
 		    	else if (forward > .1){
-		    		return forward;
-		    	}
-		    	else if (reverse > .1){
+					return forward;
+				}
+				else if (reverse > .1){
 		    		return -reverse;
 		    	}
 		    	else
@@ -52,7 +58,12 @@ public class OI {
 			return DriveJoystick.getRawAxis(RobotMap.turnAxis);
 		}
 		
-		public double GetGripperAxis(){
-			return operatorStick.getRawAxis(2) + operatorStick.getRawAxis(3);
+		public double GetClimberAxis(){
+			return operatorStick.getRawAxis(1);
 		}
+		public double GetElevatorAxis(){
+			return operatorStick.getRawAxis(5);
+		}
+		
+
 }

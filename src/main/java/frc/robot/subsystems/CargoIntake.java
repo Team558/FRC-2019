@@ -7,6 +7,7 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -15,14 +16,20 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class CargoIntake extends Subsystem {
 
-  TalonSRX cargoLeader = new TalonSRX(6);
-  TalonSRX cargoFollower = new TalonSRX(7);
+  TalonSRX cargoLeader = new TalonSRX(10);
+  TalonSRX cargoFollower = new TalonSRX(11);
   
-
+public CargoIntake(){
+  cargoFollower.follow(cargoLeader);
+}
 
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
+  }
+
+  public void RunCargoIntake(double output){
+    cargoLeader.set(ControlMode.PercentOutput, output);
   }
 }
