@@ -10,7 +10,7 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
-import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -23,10 +23,10 @@ public class Drivetrain extends Subsystem {
   TalonSRX leftLeader = new TalonSRX(15);
   TalonSRX rightLeader = new TalonSRX(2);
 
-  VictorSPX leftFollower1 = new VictorSPX(14);
-  VictorSPX leftFollower2 = new VictorSPX(13);
-  VictorSPX rightFollower1 = new VictorSPX(1);
-  VictorSPX rightFollower2 = new VictorSPX(16);
+  TalonSRX leftFollower1 = new TalonSRX(14);
+  TalonSRX leftFollower2 = new TalonSRX(13);
+  TalonSRX rightFollower1 = new TalonSRX(1);
+  TalonSRX rightFollower2 = new TalonSRX(16);
 
   public Drivetrain(){
 
