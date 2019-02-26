@@ -17,12 +17,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.subsystems.CargoIntake;
-import frc.robot.subsystems.Climber;
-import frc.robot.subsystems.Drivetrain;
-import frc.robot.subsystems.Elevator;
-import frc.robot.subsystems.HatchExtender;
-import frc.robot.subsystems.HatchGrabber;
+import frc.robot.subsystems.*;
 
 import edu.wpi.first.wpilibj.Relay.Value;
 
@@ -34,7 +29,9 @@ public class Robot extends TimedRobot {
   public static Elevator elevator = new Elevator();
   public static HatchExtender hatchExtender = new HatchExtender();
   public static HatchGrabber hatchGrabber = new HatchGrabber();
+  public static CargoTater cargoTater = new CargoTater();
   public static UsbCamera camera = null;
+
 
   public static Compressor pcm = new Compressor();
 	public static Relay compressor = new Relay(0);
