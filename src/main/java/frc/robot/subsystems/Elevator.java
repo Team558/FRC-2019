@@ -30,7 +30,7 @@ public class Elevator extends Subsystem {
 
   //---Soft Limit Positions---//
   //Need variables for top and bottom soft limits
-
+  
 
   TalonSRX elevatorLeader = new TalonSRX(6);
   TalonSRX elevatorFollower = new TalonSRX(7);
@@ -39,14 +39,20 @@ public class Elevator extends Subsystem {
   public final static int ELEVATOR_UP = 0;
   public final static int ELEVATOR_DOWN = 1;
 
+  public int elevatorZero = 0;
+  public int pickUp = 200;
+  public int middleGoal = 12800;
+  public int highGoal = 25700;
+  public int topLimit = 26100;
+
   public Elevator(){
 
     elevatorFollower.follow(elevatorLeader);
     //elevatorLeader.set(ControlMode.MotionMagic, 0);
     elevatorLeader.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Absolute, 0, 0);
 
-    elevatorLeader.configMotionAcceleration(0, 0);
-    elevatorLeader.configMotionCruiseVelocity(0, 0);
+    elevatorLeader.configMotionCruiseVelocity(3250);
+    elevatorLeader.configMotionAcceleration(9750);
 
     // for the elevator going up
     elevatorLeader.selectProfileSlot(ELEVATOR_UP, 0);
@@ -72,6 +78,11 @@ public class Elevator extends Subsystem {
 
 public void DriveElevator(double output){
   elevatorLeader.set(ControlMode.PercentOutput, output);
+}
+public void magicElevator(double position){
+
+    elevatorLeader.set(ControlMode.MotionMagic, position);
+
 }
 
 public double GetElevatorEncoder(){
