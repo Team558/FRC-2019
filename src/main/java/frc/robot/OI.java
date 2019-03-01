@@ -18,16 +18,21 @@ public class OI {
     XboxController operatorStick = new XboxController(1);
 
     public OI(){
-        JoystickButton DuckBillToggle = new JoystickButton(DriveJoystick, 1);
+        JoystickButton DuckBillToggle = new JoystickButton(operatorStick, 1);
         DuckBillToggle.toggleWhenPressed(new FireHatchGrabber());
     
-        JoystickButton QuackLauncherToggle = new JoystickButton(DriveJoystick, 2);
+        JoystickButton QuackLauncherToggle = new JoystickButton(operatorStick, 2);
 		QuackLauncherToggle.toggleWhenPressed(new FireHatchExtender());
 		
-		JoystickButton cargoIntakeIn = new JoystickButton(operatorStick, 3);
-		cargoIntakeIn.toggleWhenPressed(new CargoIntakeIn());
-		JoystickButton cargoIntakeOut = new JoystickButton(operatorStick, 4);
-		cargoIntakeOut.toggleWhenPressed(new CargoIntakeOut());
+		JoystickButton elevatorPickup = new JoystickButton(operatorStick, 3);
+		elevatorPickup.whenPressed(new ElevatorToPickup());
+		JoystickButton elevatorMidGoal = new JoystickButton(operatorStick, 4);
+		elevatorMidGoal.whenPressed(new ElevatorToMid());
+		JoystickButton elevatorManualMode = new JoystickButton(operatorStick, 8);
+		elevatorManualMode.whenPressed(new RunElevatorManual());
+		JoystickButton zeroElevator = new JoystickButton(operatorStick, 7);
+		zeroElevator.whenPressed(new ZeroElevator());
+		
 
 		JoystickButton cargoactuate = new JoystickButton(operatorStick, 5);
 		cargoactuate.toggleWhenPressed(new CargoAcutate());
@@ -58,15 +63,34 @@ public class OI {
 
 			
 		public double GetTurn(){
-			return DriveJoystick.getRawAxis(RobotMap.turnAxis);
+			return -DriveJoystick.getRawAxis(RobotMap.turnAxis);
 		}
 		
-		public double GetClimberAxis(){
+		//public double GetClimberAxis(){
+		//	return operatorStick.getRawAxis(5);
+		//}
+		public double GetElevatorAxis(){
 			return operatorStick.getRawAxis(1);
 		}
-		public double GetElevatorAxis(){
-			return operatorStick.getRawAxis(5);
-		}
 		
+
+		public double GetCargoStick(){
+			double reverse = operatorStick.getRawAxis(RobotMap.throttleForwardAxis);
+		   	double forward = operatorStick.getRawAxis(RobotMap.throttleReverseAxis);
+
+		    	
+		    	if ((reverse > .1) && (forward >.1)){
+		    		return 0;
+		    	}
+		    	else if (forward > .1){
+					return forward;
+				}
+				else if (reverse > .1){
+		    		return -reverse;
+		    	}
+		    	else
+		    		return 0;
+			}
+
 
 }

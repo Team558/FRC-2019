@@ -11,22 +11,21 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.commands.RunCargoIntake;
 
 
 
 public class CargoIntake extends Subsystem {
 
   TalonSRX cargoLeader = new TalonSRX(10);
-  TalonSRX cargoFollower = new TalonSRX(11);
   
 public CargoIntake(){
-  cargoFollower.follow(cargoLeader);
 }
 
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
+    setDefaultCommand(new RunCargoIntake());
   }
 
   public void RunCargoIntake(double output){

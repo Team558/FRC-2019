@@ -10,10 +10,10 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class RunClimberManual extends Command {
-  public RunClimberManual() {
+public class RunCargoIntake extends Command {
+  public RunCargoIntake() {
     // Use requires() here to declare subsystem dependencies
-    requires(Robot.climber);
+    requires(Robot.cargoIntake);
   }
 
   // Called just before this Command runs the first time
@@ -24,8 +24,7 @@ public class RunClimberManual extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-  //  Robot.climber.DriveClimber((Robot.m_oi.GetClimberAxis()/2.));
-
+    Robot.cargoIntake.RunCargoIntake(Robot.m_oi.GetCargoStick());
   }
 
   // Make this return true when this Command no longer needs to run execute()

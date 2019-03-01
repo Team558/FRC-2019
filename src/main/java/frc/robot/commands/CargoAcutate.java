@@ -14,6 +14,7 @@ public class CargoAcutate extends Command {
   public CargoAcutate() {
     // Use requires() here to declare subsystem dependencies
     requires(Robot.cargoTater);
+    
   }
 
   // Called just before this Command runs the first time

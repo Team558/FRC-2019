@@ -47,12 +47,12 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     m_oi = new OI();
     camera = CameraServer.getInstance().startAutomaticCapture();
-    if (camera != null){
+    //if (camera != null){
       camera.setResolution(500,375); //640x480 or 500x375
       camera.setPixelFormat(PixelFormat.kMJPEG);
       camera.setBrightness(40);
       camera.setFPS(20); //10 or 20
-    }
+    //}
   }
 
   
@@ -98,7 +98,7 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
     this.CompressorHandler();
-    SmartDashboard.putNumber("Elevator Encoder", Robot.elevator.GetElevatorEncoder());
+    SmartDashboard.putNumber("Elevator Encoder", Robot.elevator.GetCurrentPosition());
     SmartDashboard.putNumber("Right Drive Encoder", Robot.drivetrain.readRightEncoder());
     SmartDashboard.putNumber("Left Drive Encoder", Robot.drivetrain.readLeftEncoder());
   }
