@@ -66,9 +66,9 @@ public class OI {
 			return -DriveJoystick.getRawAxis(RobotMap.turnAxis);
 		}
 		
-		//public double GetClimberAxis(){
-		//	return operatorStick.getRawAxis(5);
-		//}
+		public double GetClimberAxis(){
+			return operatorStick.getRawAxis(5);
+		}
 		public double GetElevatorAxis(){
 			return operatorStick.getRawAxis(1);
 		}
@@ -77,8 +77,6 @@ public class OI {
 		public double GetCargoStick(){
 			double reverse = operatorStick.getRawAxis(RobotMap.throttleForwardAxis);
 		   	double forward = operatorStick.getRawAxis(RobotMap.throttleReverseAxis);
-
-		    	
 		    	if ((reverse > .1) && (forward >.1)){
 		    		return 0;
 		    	}

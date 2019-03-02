@@ -10,10 +10,13 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class RunClimberManual extends Command {
-  public RunClimberManual() {
+public class CargoDownRun extends Command {
+  public CargoDownRun() {
     // Use requires() here to declare subsystem dependencies
-    requires(Robot.climber);
+    requires(Robot.cargoIntake);
+    requires(Robot.cargoTater);
+    requires(Robot.hatchExtender);
+    requires(Robot.hatchGrabber);
   }
 
   // Called just before this Command runs the first time
@@ -24,7 +27,11 @@ public class RunClimberManual extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.climber.DriveClimber((Robot.m_oi.GetClimberAxis()/2.));
+
+    Robot.cargoTater.intakeDown();
+    Robot.cargoIntake.RunCargoIntake(-.5);
+    Robot.hatchExtender.retractQuackLauncher();
+    Robot.hatchGrabber.retractDuckBill();
 
   }
 
@@ -43,5 +50,12 @@ public class RunClimberManual extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+
+    Robot.cargoTater.intakeUp();
+    Robot.cargoIntake.RunCargoIntake(0);
+    Robot.hatchExtender.retractQuackLauncher();
+    Robot.hatchGrabber.retractDuckBill();
+
+
   }
 }
