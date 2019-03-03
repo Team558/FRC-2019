@@ -13,8 +13,8 @@ public class RobotMap {
     public static int throttleReverseAxis = 2; 
     public static int quickTurnButton = 2;
     public static int turnAxis = 0;
-    public static double quickturnSensitivity = .80;
-	public static double normalTurnSensitivity = .75;
+    public static double quickturnSensitivity = .69;
+	public static double normalTurnSensitivity = .65;
 	
 
 }
