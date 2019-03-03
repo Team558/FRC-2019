@@ -66,9 +66,9 @@ public class OI {
 			return -DriveJoystick.getRawAxis(RobotMap.turnAxis);
 		}
 		
-		//public double GetClimberAxis(){
-		//	return operatorStick.getRawAxis(5);
-		//}
+		public double GetClimberAxis(){
+			return operatorStick.getRawAxis(5);
+		}
 		public double GetElevatorAxis(){
 			return operatorStick.getRawAxis(1);
 		}
