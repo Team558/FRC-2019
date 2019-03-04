@@ -26,7 +26,7 @@ public class HatchExtendPinch extends Command {
   @Override
   protected void execute() {
 
-    Robot.hatchExtender.fireQuackLauncher();
+    Robot.hatchExtender.retractQuackLauncher();
     Robot.hatchGrabber.fireDuckBill();
 
   }
