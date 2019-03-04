@@ -15,6 +15,7 @@ public class HatchExtendPinch extends Command {
     // Use requires() here to declare subsystem dependencies
     requires(Robot.hatchExtender);
     requires(Robot.hatchGrabber);
+    requires(Robot.cargoTater);
   }
 
   // Called just before this Command runs the first time
@@ -26,8 +27,11 @@ public class HatchExtendPinch extends Command {
   @Override
   protected void execute() {
 
-    Robot.hatchExtender.retractQuackLauncher();
+    Robot.cargoTater.intakeUp();
     Robot.hatchGrabber.fireDuckBill();
+    Robot.hatchExtender.retractQuackLauncher();
+    
+
 
   }
 
@@ -46,8 +50,8 @@ public class HatchExtendPinch extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-
-    Robot.hatchExtender.retractQuackLauncher();
+    
+    Robot.cargoTater.intakeUp();
     Robot.hatchGrabber.retractDuckBill();
 
   }
