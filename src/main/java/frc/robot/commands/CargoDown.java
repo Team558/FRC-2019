@@ -51,6 +51,8 @@ public class CargoDown extends Command {
   @Override
   protected void interrupted() {
 
+    Robot.hatchExtender.retractQuackLauncher();
+    Robot.hatchGrabber.retractDuckBill();
     Robot.cargoTater.intakeUp();
     Robot.cargoIntake.RunCargoIntake(0); 
 
