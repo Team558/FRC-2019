@@ -21,8 +21,8 @@ public class OI {
         JoystickButton DuckBillToggle = new JoystickButton(operatorStick, 1);
         DuckBillToggle.toggleWhenPressed(new FireHatchGrabber());
     
-        JoystickButton QuackLauncherToggle = new JoystickButton(operatorStick, 2);
-		QuackLauncherToggle.toggleWhenPressed(new FireHatchExtender());
+      	JoystickButton QuackLauncherToggle = new JoystickButton(operatorStick, 2);
+				QuackLauncherToggle.toggleWhenPressed(new HatchExtendPinch());
 		
 		JoystickButton elevatorPickup = new JoystickButton(operatorStick, 3);
 		elevatorPickup.whenPressed(new ElevatorToPickup());
@@ -67,14 +67,14 @@ public class OI {
 		}
 		
 		public double GetClimberAxis(){
-			return operatorStick.getRawAxis(5);
+			return operatorStick.getRawAxis(1);
 		}
 		public double GetElevatorAxis(){
-			return operatorStick.getRawAxis(1);
+			return operatorStick.getRawAxis(5);
 		}
 		
 
-		public double GetCargoStick(){
+		public double GetCargoThrottle(){
 			double reverse = operatorStick.getRawAxis(RobotMap.throttleForwardAxis);
 		   	double forward = operatorStick.getRawAxis(RobotMap.throttleReverseAxis);
 		    	if ((reverse > .1) && (forward >.1)){
