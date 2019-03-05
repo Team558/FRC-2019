@@ -12,6 +12,9 @@ import frc.robot.OI;
 import frc.robot.Robot;
 
 public class MoveElevatorPositions extends Command {
+
+  double targetPos;
+
   public MoveElevatorPositions() {
     // Use requires() here to declare subsystem dependencies
     requires(Robot.elevator);
@@ -25,7 +28,7 @@ public class MoveElevatorPositions extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    double targetPos;
+    
 
     if(Robot.m_oi.getPOVElevator() == 180){
 
@@ -48,6 +51,8 @@ public class MoveElevatorPositions extends Command {
       targetPos = Robot.elevator.cargoShip;
 
     }
+
+    Robot.elevator.GoToTarget(targetPos);
 
   }
 

@@ -21,15 +21,11 @@ public class OI {
         JoystickButton DuckBillToggle = new JoystickButton(operatorStick, 1);
         DuckBillToggle.toggleWhenPressed(new FireHatchGrabber());
     
-      	JoystickButton QuackLauncherToggle = new JoystickButton(operatorStick, 2);
-				QuackLauncherToggle.toggleWhenPressed(new HatchExtendPinch());
-		
-		JoystickButton elevatorPickup = new JoystickButton(operatorStick, 3);
-		elevatorPickup.whenPressed(new ElevatorToPickup());
-		JoystickButton elevatorMidGoal = new JoystickButton(operatorStick, 4);
-		elevatorMidGoal.whenPressed(new ElevatorToMid());
+      JoystickButton QuackLauncherToggle = new JoystickButton(operatorStick, 2);
+			QuackLauncherToggle.toggleWhenPressed(new HatchExtendPinch());
+
 		JoystickButton elevatorManualMode = new JoystickButton(operatorStick, 8);
-		elevatorManualMode.whenPressed(new RunElevatorManual());
+		elevatorManualMode.toggleWhenPressed(new RunElevatorManual());
 		JoystickButton zeroElevator = new JoystickButton(operatorStick, 7);
 		zeroElevator.whenPressed(new ZeroElevator());
 		
