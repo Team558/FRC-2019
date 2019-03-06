@@ -7,10 +7,14 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import frc.robot.commands.*;
+import frc.robot.commands.CargoAcutate;
+import frc.robot.commands.FireHatchExtender;
+import frc.robot.commands.FireHatchGrabber;
+import frc.robot.commands.RunElevatorManual;
+import frc.robot.commands.ZeroElevator;
 
 public class OI {
 
@@ -32,7 +36,17 @@ public class OI {
 
 		JoystickButton cargoactuate = new JoystickButton(operatorStick, 5);
 		cargoactuate.toggleWhenPressed(new CargoAcutate());
-    }
+		}
+		
+		//Haptic Feedback 
+		public void setrumble(double rumble){
+			
+			DriveJoystick.setRumble(GenericHID.RumbleType.kLeftRumble, rumble);
+			DriveJoystick.setRumble(GenericHID.RumbleType.kRightRumble, rumble);
+			operatorStick.setRumble(GenericHID.RumbleType.kLeftRumble, rumble);
+			operatorStick.setRumble(GenericHID.RumbleType.kRightRumble, rumble);
+			
+		}
     
     //Elm City Drive OI Methods
 		public boolean GetQuickTurn(){

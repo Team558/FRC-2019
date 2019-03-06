@@ -12,9 +12,12 @@ import edu.wpi.first.wpilibj.command.WaitCommand;
 import frc.robot.Robot;
 
 public class HatchExtendPinch extends Command {
+  public HatchGrabRetract hatch = new HatchGrabRetract();
+
   public HatchExtendPinch() {
     // Use requires() here to declare subsystem dependencies
     requires(Robot.cargoTater);
+    
   }
 
   // Called just before this Command runs the first time
@@ -49,8 +52,7 @@ public class HatchExtendPinch extends Command {
   protected void interrupted() {
     
     Robot.cargoTater.intakeUp();
-    Robot.hatchExtender.retractQuackLauncher();
-    Robot.hatchGrabber.fireDuckBill();
+    hatch.start();
 
   }
 }
