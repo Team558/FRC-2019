@@ -22,7 +22,7 @@ public class OI {
         DuckBillToggle.toggleWhenPressed(new FireHatchGrabber());
     
       JoystickButton QuackLauncherToggle = new JoystickButton(operatorStick, 2);
-			QuackLauncherToggle.toggleWhenPressed(new HatchExtendPinch());
+			QuackLauncherToggle.toggleWhenPressed(new FireHatchExtender());
 
 		JoystickButton elevatorManualMode = new JoystickButton(operatorStick, 8);
 		elevatorManualMode.toggleWhenPressed(new RunElevatorManual());
@@ -69,10 +69,10 @@ public class OI {
 		}
 		
 		public double GetClimberAxis(){
-			return operatorStick.getRawAxis(1);
+			return operatorStick.getRawAxis(5);
 		}
 		public double GetElevatorAxis(){
-			return operatorStick.getRawAxis(5);
+			return operatorStick.getRawAxis(1);
 		}
 		
 

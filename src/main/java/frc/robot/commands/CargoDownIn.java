@@ -8,13 +8,11 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.command.WaitCommand;
-import frc.robot.Robot;
 
-public class HatchExtendPinch extends Command {
-  public HatchExtendPinch() {
+public class CargoDownIn extends Command {
+  public CargoDownIn() {
     // Use requires() here to declare subsystem dependencies
-    requires(Robot.cargoTater);
+    // eg. requires(chassis);
   }
 
   // Called just before this Command runs the first time
@@ -25,11 +23,6 @@ public class HatchExtendPinch extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-
-    Robot.cargoTater.intakeUp();
-    
-
-
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -47,10 +40,5 @@ public class HatchExtendPinch extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    
-    Robot.cargoTater.intakeUp();
-    Robot.hatchExtender.retractQuackLauncher();
-    Robot.hatchGrabber.fireDuckBill();
-
   }
 }

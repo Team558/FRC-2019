@@ -33,7 +33,7 @@ public class Elevator extends Subsystem {
   public int middleGoal = 12800;
   public int highGoal = 25000;
   public int topLimit = 26100;
-  public int cargoShip = 10000;
+  public int cargoShip = 6000;
 
   public Elevator(){
 
