@@ -47,12 +47,10 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     m_oi = new OI();
     camera = CameraServer.getInstance().startAutomaticCapture();
-    if (camera != null){
-      camera.setResolution(500,375); //640x480 or 500x375
-      camera.setPixelFormat(PixelFormat.kMJPEG);
-      camera.setBrightness(40);
-      camera.setFPS(20); //10 or 20
-    }
+    camera.setResolution(500,375); //640x480 or 500x375
+    camera.setPixelFormat(PixelFormat.kMJPEG);
+    camera.setBrightness(40);
+    camera.setFPS(20); //10 or 20
   }
 
   

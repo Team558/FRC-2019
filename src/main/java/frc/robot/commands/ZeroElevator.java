@@ -10,11 +10,10 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class FireHatchExtender extends Command {
-  public HatchGrabRetract hatchSequence = new HatchGrabRetract();
-  public FireHatchExtender() {
+public class ZeroElevator extends Command {
+  public ZeroElevator() {
     // Use requires() here to declare subsystem dependencies
-    requires(Robot.hatchExtender);
+    requires(Robot.elevator);
   }
 
   // Called just before this Command runs the first time
@@ -25,9 +24,7 @@ public class FireHatchExtender extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-
-    Robot.hatchExtender.fireQuackLauncher();
-
+    Robot.elevator.ZeroOutEncoder();
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -45,7 +42,5 @@ public class FireHatchExtender extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    
-    hatchSequence.start();
   }
 }

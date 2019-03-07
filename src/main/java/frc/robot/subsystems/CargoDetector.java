@@ -7,31 +7,24 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
+/**
+ * Add your docs here.
+ */
+public class CargoDetector extends Subsystem {
+  // Put methods for controlling this subsystem
+  // here. Call these from Commands.
+  DigitalInput cargoSensor = new DigitalInput(0);
 
 
-public class HatchExtender extends Subsystem {
+  public boolean readSensor(){
 
-  DoubleSolenoid quackLauncher = new DoubleSolenoid(2, 3);
-
-  public void fireQuackLauncher(){
-    quackLauncher.set(Value.kForward);
-  }
-  public void retractQuackLauncher(){
-    quackLauncher.set(Value.kReverse);
-  }
-
-  public Enum getLauncherValue(){
-
-    return quackLauncher.get();
+    return cargoSensor.get();
 
   }
 
-
-  
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.

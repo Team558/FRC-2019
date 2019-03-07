@@ -24,7 +24,8 @@ public class RunElevatorManual extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.elevator.DriveElevator((Robot.m_oi.GetElevatorAxis()/3.));
+   
+  Robot.elevator.ManualControl((-Robot.m_oi.GetElevatorAxis()/2.));
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -42,5 +43,8 @@ public class RunElevatorManual extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+
+    Robot.elevator.initDefaultCommand();
+
   }
 }

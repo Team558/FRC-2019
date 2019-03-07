@@ -24,7 +24,7 @@ public class RunClimberManual extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.climber.DriveClimber((Robot.m_oi.GetClimberAxis()/2.));
+    Robot.climber.DriveClimber((Robot.m_oi.GetClimberAxis()));
 
   }
 

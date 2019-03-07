@@ -8,12 +8,14 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import frc.robot.Robot;
 
 public class CargoAcutate extends Command {
   public CargoAcutate() {
     // Use requires() here to declare subsystem dependencies
     requires(Robot.cargoTater);
+    
   }
 
   // Called just before this Command runs the first time
@@ -25,7 +27,18 @@ public class CargoAcutate extends Command {
   @Override
   protected void execute() {
 
-    Robot.cargoTater.intakeDown();
+    if(Robot.hatchExtender.getLauncherValue() == Value.kForward){
+
+      Robot.cargoTater.intakeUp();
+
+    }
+    else{
+
+      Robot.cargoTater.intakeDown();
+
+    }
+    
+
 
   }
 
