@@ -18,31 +18,44 @@ public class OI {
     XboxController operatorStick = new XboxController(1);
 
     public OI(){
-        JoystickButton DuckBillToggle = new JoystickButton(DriveJoystick, 1);
-        DuckBillToggle.toggleWhenPressed(new FireHatchGrabber());
-    
-        JoystickButton QuackLauncherToggle = new JoystickButton(DriveJoystick, 2);
-		QuackLauncherToggle.toggleWhenPressed(new FireHatchExtender());
-		
-		JoystickButton cargoIntakeIn = new JoystickButton(operatorStick, 3);
-		cargoIntakeIn.toggleWhenPressed(new CargoIntakeIn());
-		JoystickButton cargoIntakeOut = new JoystickButton(operatorStick, 4);
-		cargoIntakeOut.toggleWhenPressed(new CargoIntakeOut());
+
+			JoystickButton DuckBillToggle = new JoystickButton(operatorStick, 1);
+			DuckBillToggle.toggleWhenPressed(new FireHatchGrabber());
+	
+			JoystickButton QuackLauncherToggle = new JoystickButton(operatorStick, 2);
+			QuackLauncherToggle.toggleWhenPressed(new FireHatchExtender());
+
+		JoystickButton elevatorManualMode = new JoystickButton(operatorStick, 8);
+		elevatorManualMode.toggleWhenPressed(new RunElevatorManual());
+		JoystickButton zeroElevator = new JoystickButton(operatorStick, 7);
+		zeroElevator.whenPressed(new ZeroElevator());
+	
 
 		JoystickButton cargoactuate = new JoystickButton(operatorStick, 5);
 		cargoactuate.toggleWhenPressed(new CargoAcutate());
-    }
+  }
     
-    //Elm City Drive OI Methods
-		public boolean GetQuickTurn(){
-			return DriveJoystick.getRawButton(RobotMap.quickTurnButton);
-				
+		//Elm City Drive OI Methods
+		public double GetTurn(){
+			return -DriveJoystick.getRawAxis(RobotMap.turnAxis);
 		}
-		public double GetThrottle(){
-			double reverse = DriveJoystick.getRawAxis(RobotMap.throttleForwardAxis);
-		   	double forward = DriveJoystick.getRawAxis(RobotMap.throttleReverseAxis);
 
-		    	
+		public double getPOVElevator(){
+
+			return operatorStick.getPOV();
+
+		}
+		
+		public double GetClimberAxis(){
+			return operatorStick.getRawAxis(5);
+		}
+		public double GetElevatorAxis(){
+			return operatorStick.getRawAxis(1);
+		}
+
+		public double GetCargoThrottle(){
+			double reverse = operatorStick.getRawAxis(RobotMap.throttleForwardAxis);
+		   	double forward = operatorStick.getRawAxis(RobotMap.throttleReverseAxis);
 		    	if ((reverse > .1) && (forward >.1)){
 		    		return 0;
 		    	}
@@ -55,18 +68,4 @@ public class OI {
 		    	else
 		    		return 0;
 			}
-
-			
-		public double GetTurn(){
-			return DriveJoystick.getRawAxis(RobotMap.turnAxis);
-		}
-		
-		public double GetClimberAxis(){
-			return operatorStick.getRawAxis(1);
-		}
-		public double GetElevatorAxis(){
-			return operatorStick.getRawAxis(5);
-		}
-		
-
 }
