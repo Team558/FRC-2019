@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class FireHatchExtender extends Command {
+  public HatchGrabRetract hatchSequence = new HatchGrabRetract();
   public FireHatchExtender() {
     // Use requires() here to declare subsystem dependencies
     requires(Robot.hatchExtender);
@@ -45,7 +46,6 @@ public class FireHatchExtender extends Command {
   @Override
   protected void interrupted() {
     
-    Robot.hatchExtender.retractQuackLauncher();
-
+    hatchSequence.start();
   }
 }
