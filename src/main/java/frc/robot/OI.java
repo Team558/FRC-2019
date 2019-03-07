@@ -39,6 +39,23 @@ public class OI {
 		public double GetTurn(){
 			return -DriveJoystick.getRawAxis(RobotMap.turnAxis);
 		}
+		public double GetThrottle(){
+			double reverse = DriveJoystick.getRawAxis(RobotMap.throttleForwardAxis);
+		   	double forward = DriveJoystick.getRawAxis(RobotMap.throttleReverseAxis);
+
+		    	
+		    	if ((reverse > .1) && (forward >.1)){
+		    		return 0;
+		    	}
+		    	else if (forward > .1){
+					return forward;
+				}
+				else if (reverse > .1){
+		    		return -reverse;
+		    	}
+		    	else
+		    		return 0;
+			}
 
 		public double getPOVElevator(){
 

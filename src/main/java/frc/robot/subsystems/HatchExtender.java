@@ -24,6 +24,12 @@ public class HatchExtender extends Subsystem {
     quackLauncher.set(Value.kReverse);
   }
 
+  public Enum getLauncherValue(){
+
+    return quackLauncher.get();
+
+  }
+
 
   
   @Override
