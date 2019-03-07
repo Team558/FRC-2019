@@ -8,14 +8,16 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
+import frc.robot.OI;
 import frc.robot.Robot;
 
-public class CargoAcutate extends Command {
-  public CargoAcutate() {
+public class MoveElevatorPositions extends Command {
+
+  double targetPos;
+
+  public MoveElevatorPositions() {
     // Use requires() here to declare subsystem dependencies
-    requires(Robot.cargoTater);
-    
+    requires(Robot.elevator);
   }
 
   // Called just before this Command runs the first time
@@ -26,19 +28,31 @@ public class CargoAcutate extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-
-    if(Robot.hatchExtender.getLauncherValue() == Value.kForward){
-
-      Robot.cargoTater.intakeUp();
-
-    }
-    else{
-
-      Robot.cargoTater.intakeDown();
-
-    }
     
 
+    if(Robot.m_oi.getPOVElevator() == 180){
+
+      targetPos = Robot.elevator.pickUp;
+
+    }
+    else if(Robot.m_oi.getPOVElevator() == 90){
+
+      targetPos = Robot.elevator.middleGoal;
+
+    }
+
+    else if(Robot.m_oi.getPOVElevator() == 0){
+
+      targetPos = Robot.elevator.highGoal;
+
+    }
+    else if(Robot.m_oi.getPOVElevator() == 270){
+
+      targetPos = Robot.elevator.cargoShip;
+
+    }
+
+    Robot.elevator.GoToTarget(targetPos);
 
   }
 
@@ -57,8 +71,5 @@ public class CargoAcutate extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-
-    Robot.cargoTater.intakeUp();
-    
   }
 }
