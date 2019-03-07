@@ -28,6 +28,9 @@ public class OI {
 		cargoIntakeIn.toggleWhenPressed(new CargoIntakeIn());
 		JoystickButton cargoIntakeOut = new JoystickButton(operatorStick, 4);
 		cargoIntakeOut.toggleWhenPressed(new CargoIntakeOut());
+
+		JoystickButton cargoactuate = new JoystickButton(operatorStick, 5);
+		cargoactuate.toggleWhenPressed(new CargoAcutate());
     }
     
     //Elm City Drive OI Methods
