@@ -30,6 +30,7 @@ public class Robot extends TimedRobot {
   public static HatchExtender hatchExtender = new HatchExtender();
   public static HatchGrabber hatchGrabber = new HatchGrabber();
   public static CargoTater cargoTater = new CargoTater();
+  public static CargoDetector cargoDetector = new CargoDetector();
   public static UsbCamera camera = null;
 
 
@@ -101,6 +102,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Elevator Encoder", Robot.elevator.GetCurrentPosition());
     SmartDashboard.putNumber("Right Drive Encoder", Robot.drivetrain.readRightEncoder());
     SmartDashboard.putNumber("Left Drive Encoder", Robot.drivetrain.readLeftEncoder());
+    SmartDashboard.putBoolean("Cargo Detector", Robot.cargoDetector.readSensor());
   }
 
   @Override

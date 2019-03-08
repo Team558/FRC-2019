@@ -15,7 +15,7 @@ import frc.robot.util.*;
 public class ElmCityDrive extends Command {
   private double oldWheel = 0.0;
   private double quickStopAccumulator;
-  private double wheelDeadband = 0.07;
+  private double wheelDeadband = 0.1;
 
   public ElmCityDrive() {
       // Use requires() here to declare subsystem dependencies
