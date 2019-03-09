@@ -30,6 +30,7 @@ public class Robot extends TimedRobot {
   public static HatchExtender hatchExtender = new HatchExtender();
   public static HatchGrabber hatchGrabber = new HatchGrabber();
   public static CargoTater cargoTater = new CargoTater();
+  public static ClimberSolenoid climberSolenoid = new ClimberSolenoid();
   public static UsbCamera camera = null;
 
 
@@ -56,6 +57,9 @@ public class Robot extends TimedRobot {
   
   @Override
   public void robotPeriodic() {
+
+    SmartDashboard.putNumber("Elevator Encoder", Robot.elevator.GetElevatorEncoder());
+
   }
 
   

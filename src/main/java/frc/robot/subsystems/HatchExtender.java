@@ -7,29 +7,27 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 
 
 public class HatchExtender extends Subsystem {
 
-  DoubleSolenoid quackLauncher = new DoubleSolenoid(2, 3);
+  Solenoid quackLauncher = new Solenoid(1);
+  
 
   public void fireQuackLauncher(){
-    quackLauncher.set(Value.kForward);
+    quackLauncher.set(true);
   }
   public void retractQuackLauncher(){
-    quackLauncher.set(Value.kReverse);
+    quackLauncher.set(false);
   }
-
-  public Enum getLauncherValue(){
+  public boolean readSolenoid(){
 
     return quackLauncher.get();
 
   }
-
 
   
   @Override

@@ -13,24 +13,24 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  * Add your docs here.
  */
-public class CargoTater extends Subsystem {
+public class ClimberSolenoid extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
-  Solenoid cargotron = new Solenoid(2);
+  Solenoid climber = new Solenoid(4);
 
-  public void intakeDown(){
 
-    cargotron.set(false);
+  public void fireClimber(){
 
-  }
+    climber.set(true);
 
-  public void intakeUp(){
-
-    cargotron.set(true);
 
   }
+  public void retractClimber(){
 
+    climber.set(false);
+
+  }
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.

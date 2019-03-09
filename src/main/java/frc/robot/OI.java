@@ -33,6 +33,10 @@ public class OI {
 
 		JoystickButton cargoactuate = new JoystickButton(operatorStick, 5);
 		cargoactuate.toggleWhenPressed(new CargoAcutate());
+
+		JoystickButton climberButton = new JoystickButton(DriveJoystick, 3);
+		climberButton.toggleWhenActive(new WheeliBarDownAndUp());
+
   }
     
 		//Elm City Drive OI Methods

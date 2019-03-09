@@ -34,17 +34,14 @@ public class Elevator extends Subsystem {
   public final static int ELEVATOR_DOWN = 1;
 
   public Elevator(){
-    elevatorLeader.setInverted(false);
-    elevatorFollower.setInverted(false);
+    elevatorLeader.setInverted(true);
+    elevatorFollower.setInverted(true);
     elevatorFollower.follow(elevatorLeader);
 
     elevatorLeader.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative);
 
     elevatorLeader.configForwardSoftLimitEnable(false);
     elevatorLeader.configReverseSoftLimitEnable(false);
-
-    elevatorLeader.configForwardSoftLimitThreshold(20000);
-    elevatorLeader.configReverseSoftLimitThreshold(-1000);
 
     elevatorLeader.configForwardLimitSwitchSource(RemoteLimitSwitchSource.RemoteTalonSRX,LimitSwitchNormal.NormallyOpen, 7, 10);
     elevatorLeader.configReverseLimitSwitchSource(RemoteLimitSwitchSource.RemoteTalonSRX,LimitSwitchNormal.NormallyOpen, 7, 10);
@@ -53,9 +50,9 @@ public class Elevator extends Subsystem {
 
     // for the elevator going up
     elevatorLeader.config_kF(0, .3197);
-    elevatorLeader.config_kP(0, 0.3026);
+    elevatorLeader.config_kP(0, 0.1626);
     elevatorLeader.config_kI(0, .001);
-    elevatorLeader.config_kD(0, 4);
+    elevatorLeader.config_kD(0, 13);
     elevatorLeader.config_IntegralZone(0, 500);
 
     //for the elevator going down cause of mass*gravity

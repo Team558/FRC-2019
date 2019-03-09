@@ -27,7 +27,7 @@ public class CargoAcutate extends Command {
   @Override
   protected void execute() {
 
-    if(Robot.hatchExtender.getLauncherValue() == Value.kForward){
+    if(Robot.hatchExtender.readSolenoid() == true){
 
       Robot.cargoTater.intakeUp();
 
