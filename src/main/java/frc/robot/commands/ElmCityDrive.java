@@ -10,12 +10,13 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
+import frc.robot.subsystems.TargetLargest;
 import frc.robot.util.*;
 
 public class ElmCityDrive extends Command {
   private double oldWheel = 0.0;
   private double quickStopAccumulator;
-  private double wheelDeadband = 0.07;
+  private double wheelDeadband = 0.1;
 
   public ElmCityDrive() {
       // Use requires() here to declare subsystem dependencies
@@ -32,8 +33,32 @@ public class ElmCityDrive extends Command {
     //boolean isQuickTurn = Robot.m_oi.GetQuickTurn();
 
       double wheelNonLinearity;
+    //Pixy Stuff
+      boolean isPixyDrive = Robot.m_oi.GetPixyDrive();
+      double targetsDetected = TargetLargest.theCount;
+      double target1X = TargetLargest.largestX;
+      double target2X = TargetLargest.secondLargestX;
+      double wheel;
+      if(isPixyDrive){
+        if (targetsDetected ==2){
+          double targetCenter = ((target1X+target2X)/2);
+          double targetError = 195-targetCenter;
+          double pixyKp = .006;
+          double joystickScale = .25;
+          wheel = handleDeadband((pixyKp*targetError)+(Robot.m_oi.GetTurn()*joystickScale), wheelDeadband);
+     
+       }
+       else{
+        wheel = handleDeadband(Robot.m_oi.GetTurn(), wheelDeadband);
+       }
 
-      double wheel = handleDeadband(Robot.m_oi.GetTurn(), wheelDeadband);
+      }
+      else{
+        wheel = handleDeadband(Robot.m_oi.GetTurn(), wheelDeadband);
+      }
+
+      
+      
       double throttle = Robot.m_oi.GetThrottle();
 
       double negInertia = wheel - oldWheel;

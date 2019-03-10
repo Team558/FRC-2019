@@ -34,8 +34,11 @@ public class OI {
 		JoystickButton cargoactuate = new JoystickButton(operatorStick, 5);
 		cargoactuate.toggleWhenPressed(new CargoAcutate());
 
+		JoystickButton climbBackButton = new JoystickButton(DriveJoystick, 2);
+		climbBackButton.whileHeld(new LiftButt());
+
 		JoystickButton climberButton = new JoystickButton(DriveJoystick, 3);
-		climberButton.toggleWhenActive(new WheeliBarDownAndUp());
+		climberButton.whileHeld(new WheeliBarDownAndUp());
 
   }
     
@@ -67,16 +70,16 @@ public class OI {
 
 		}
 		
-		public double GetClimberAxis(){
+		/*public double GetClimberAxis(){
 			return operatorStick.getRawAxis(5);
-		}
+		}*/
 		public double GetElevatorAxis(){
 			return operatorStick.getRawAxis(1);
 		}
 
 		public double GetCargoThrottle(){
-			double reverse = operatorStick.getRawAxis(RobotMap.throttleForwardAxis);
-		   	double forward = operatorStick.getRawAxis(RobotMap.throttleReverseAxis);
+			double reverse = operatorStick.getRawAxis(3);
+		   	double forward = operatorStick.getRawAxis(2);
 		    	if ((reverse > .1) && (forward >.1)){
 		    		return 0;
 		    	}
@@ -88,5 +91,9 @@ public class OI {
 		    	}
 		    	else
 		    		return 0;
+			}
+
+			public boolean GetPixyDrive(){
+				return DriveJoystick.getRawButton(1);
 			}
 }

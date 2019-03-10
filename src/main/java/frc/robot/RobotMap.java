@@ -9,8 +9,8 @@ package frc.robot;
 
 public class RobotMap {
 
-    public static int throttleForwardAxis = 3;
-    public static int throttleReverseAxis = 2; 
+    public static int throttleForwardAxis = 2;
+    public static int throttleReverseAxis = 3; 
     public static int quickTurnButton = 2;
     public static int turnAxis = 0;
     public static double quickturnSensitivity = .69;

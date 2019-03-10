@@ -18,16 +18,18 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.commands.MoveElevatorPositions;
 
 public class Elevator extends Subsystem {
-
+ 
   TalonSRX elevatorLeader = new TalonSRX(6);
   TalonSRX elevatorFollower = new TalonSRX(7);
 
   public int elevatorZero = 0;
   public int pickUp = 200;
-  public int middleGoal = 12800;
-  public int highGoal = 25000;
+  public int middleGoal = 10230;
+  public int highGoal = 20612;
   public int topLimit = 26100;
-  public int cargoShip = 6000;
+  public int cargoShip = 5000;
+  public int midCargo = 9340;
+  public int topCargo = 19400;
 
   //Slots # gains
   public final static int ELEVATOR_UP = 0;
@@ -50,7 +52,7 @@ public class Elevator extends Subsystem {
 
     // for the elevator going up
     elevatorLeader.config_kF(0, .3197);
-    elevatorLeader.config_kP(0, 0.1626);
+    elevatorLeader.config_kP(0, 0.1926);
     elevatorLeader.config_kI(0, .001);
     elevatorLeader.config_kD(0, 13);
     elevatorLeader.config_IntegralZone(0, 500);
@@ -59,7 +61,7 @@ public class Elevator extends Subsystem {
     elevatorLeader.config_kF(1, .2697);
     elevatorLeader.config_kP(1, 0.2026);
     elevatorLeader.config_kI(1, .001);
-    elevatorLeader.config_kD(1, 14);
+    elevatorLeader.config_kD(1, 16);
     elevatorLeader.config_IntegralZone(1, 500);
 
 

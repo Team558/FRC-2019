@@ -18,6 +18,7 @@ public class MoveElevatorPositions extends Command {
   public MoveElevatorPositions() {
     // Use requires() here to declare subsystem dependencies
     requires(Robot.elevator);
+    requires(Robot.cargoDetector);
   }
 
   // Called just before this Command runs the first time
@@ -28,6 +29,7 @@ public class MoveElevatorPositions extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    boolean iHasCargo = Robot.cargoDetector.readSensor();
     
 
     if(Robot.m_oi.getPOVElevator() == 180){
@@ -37,14 +39,29 @@ public class MoveElevatorPositions extends Command {
     }
     else if(Robot.m_oi.getPOVElevator() == 90){
 
-      targetPos = Robot.elevator.middleGoal;
+      if(iHasCargo){
 
+        targetPos = Robot.elevator.midCargo;
+
+      }
+      else{
+
+        targetPos = Robot.elevator.middleGoal;
+
+      }
     }
 
     else if(Robot.m_oi.getPOVElevator() == 0){
 
-      targetPos = Robot.elevator.highGoal;
+      if(iHasCargo){
 
+        targetPos = Robot.elevator.topCargo;
+
+      }
+      else{
+
+        targetPos = Robot.elevator.highGoal;
+      }
     }
     else if(Robot.m_oi.getPOVElevator() == 270){
 

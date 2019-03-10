@@ -10,10 +10,10 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class WheeliBarDownAndUp extends Command {
-  public WheeliBarDownAndUp() {
+public class LiftButt extends Command {
+  public LiftButt() {
     // Use requires() here to declare subsystem dependencies
-    requires(Robot.climberSolenoid);
+    requires(Robot.backClimber);
   }
 
   // Called just before this Command runs the first time
@@ -25,7 +25,7 @@ public class WheeliBarDownAndUp extends Command {
   @Override
   protected void execute() {
 
-    Robot.climberSolenoid.fireClimber();
+    Robot.backClimber.fireBackClimber();
 
   }
 
@@ -39,7 +39,7 @@ public class WheeliBarDownAndUp extends Command {
   @Override
   protected void end() {
 
-    Robot.climberSolenoid.retractClimber();
+    Robot.backClimber.retractClimber();
 
   }
 
@@ -48,7 +48,7 @@ public class WheeliBarDownAndUp extends Command {
   @Override
   protected void interrupted() {
 
-    Robot.climberSolenoid.retractClimber();
+    Robot.backClimber.retractClimber();
 
   }
 }

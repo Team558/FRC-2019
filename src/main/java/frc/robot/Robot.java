@@ -18,19 +18,20 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.*;
-
 import edu.wpi.first.wpilibj.Relay.Value;
 
 public class Robot extends TimedRobot {
   public static OI m_oi;
   public static CargoIntake cargoIntake = new CargoIntake();
   public static Drivetrain drivetrain = new Drivetrain();
+  public static Akunta backClimber = new Akunta();
   public static Climber climber = new Climber();
   public static Elevator elevator = new Elevator();
   public static HatchExtender hatchExtender = new HatchExtender();
   public static HatchGrabber hatchGrabber = new HatchGrabber();
   public static CargoTater cargoTater = new CargoTater();
   public static ClimberSolenoid climberSolenoid = new ClimberSolenoid();
+  public static CargoDetector cargoDetector = new CargoDetector();
   public static UsbCamera camera = null;
 
 
@@ -48,17 +49,22 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     m_oi = new OI();
     camera = CameraServer.getInstance().startAutomaticCapture();
-    camera.setResolution(500,375); //640x480 or 500x375
+    camera.setResolution(320,240); //640x480 or 500x375
     camera.setPixelFormat(PixelFormat.kMJPEG);
     camera.setBrightness(40);
     camera.setFPS(20); //10 or 20
+
+    Camera.setup();
   }
 
   
   @Override
   public void robotPeriodic() {
 
+    Camera.run();
     SmartDashboard.putNumber("Elevator Encoder", Robot.elevator.GetElevatorEncoder());
+    SmartDashboard.putNumber("Elevator Encoder2", Robot.elevator.GetElevatorEncoder());
+    SmartDashboard.putBoolean("Cargo Detector", Robot.cargoDetector.readSensor());
 
   }
 
@@ -77,6 +83,10 @@ public class Robot extends TimedRobot {
   public void autonomousInit() {
     m_autonomousCommand = m_chooser.getSelected();
 
+    camera.setResolution(320,240); //640x480 or 500x375
+    camera.setPixelFormat(PixelFormat.kMJPEG);
+    camera.setBrightness(40);
+    camera.setFPS(20); //10 or 20
   
     if (m_autonomousCommand != null) {
       m_autonomousCommand.start();
@@ -101,8 +111,10 @@ public class Robot extends TimedRobot {
     Scheduler.getInstance().run();
     this.CompressorHandler();
     SmartDashboard.putNumber("Elevator Encoder", Robot.elevator.GetElevatorEncoder());
+    SmartDashboard.putNumber("Elevator Encoder2", Robot.elevator.GetElevatorEncoder());
     SmartDashboard.putNumber("Right Drive Encoder", Robot.drivetrain.readRightEncoder());
     SmartDashboard.putNumber("Left Drive Encoder", Robot.drivetrain.readLeftEncoder());
+    
   }
 
   @Override

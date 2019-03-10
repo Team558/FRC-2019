@@ -21,13 +21,13 @@ public class CargoTater extends Subsystem {
 
   public void intakeDown(){
 
-    cargotron.set(false);
+    cargotron.set(true);
 
   }
 
   public void intakeUp(){
 
-    cargotron.set(true);
+    cargotron.set(false);
 
   }
 
