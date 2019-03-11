@@ -55,6 +55,8 @@ public class Robot extends TimedRobot {
     camera.setFPS(20); //10 or 20
 
     Camera.setup();
+
+    drivetrain.setRampRate();
   }
 
   
@@ -87,6 +89,8 @@ public class Robot extends TimedRobot {
     camera.setPixelFormat(PixelFormat.kMJPEG);
     camera.setBrightness(40);
     camera.setFPS(20); //10 or 20
+
+    drivetrain.setRampRate();
   
     if (m_autonomousCommand != null) {
       m_autonomousCommand.start();
@@ -104,6 +108,7 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
+    drivetrain.setRampRate();
   }
 
   @Override
