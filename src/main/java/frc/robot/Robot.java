@@ -12,14 +12,21 @@ import edu.wpi.cscore.VideoMode.PixelFormat;
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.Relay;
+import edu.wpi.first.wpilibj.Relay.Value;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.subsystems.*;
-
-import edu.wpi.first.wpilibj.Relay.Value;
+import frc.robot.subsystems.CargoDetector;
+import frc.robot.subsystems.CargoIntake;
+import frc.robot.subsystems.CargoTater;
+import frc.robot.subsystems.Climber;
+import frc.robot.subsystems.Digit;
+import frc.robot.subsystems.Drivetrain;
+import frc.robot.subsystems.Elevator;
+import frc.robot.subsystems.HatchExtender;
+import frc.robot.subsystems.HatchGrabber;
 
 public class Robot extends TimedRobot {
   public static OI m_oi;
@@ -31,6 +38,7 @@ public class Robot extends TimedRobot {
   public static HatchGrabber hatchGrabber = new HatchGrabber();
   public static CargoTater cargoTater = new CargoTater();
   public static CargoDetector cargoDetector = new CargoDetector();
+  public static Digit digitBoard = Digit.getInstance();
   public static UsbCamera camera = null;
 
 
@@ -69,6 +77,16 @@ public class Robot extends TimedRobot {
   @Override
   public void disabledPeriodic() {
     Scheduler.getInstance().run();
+
+    int val = (int) digitBoard.getPotentiometer();
+
+    switch(val){
+
+      case 3:
+        digitBoard.writeDigits("SHIV");
+
+    }
+
   }
 
   
