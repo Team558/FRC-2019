@@ -21,18 +21,18 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.CargoDetector;
 import frc.robot.subsystems.CargoIntake;
 import frc.robot.subsystems.CargoTater;
-import frc.robot.subsystems.Climber;
 import frc.robot.subsystems.Digit;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Elevator;
 import frc.robot.subsystems.HatchExtender;
 import frc.robot.subsystems.HatchGrabber;
+import frc.robot.subsystems.VacuumClimber;
 
 public class Robot extends TimedRobot {
   public static OI m_oi;
   public static CargoIntake cargoIntake = new CargoIntake();
   public static Drivetrain drivetrain = new Drivetrain();
-  public static Climber climber = new Climber();
+  public static VacuumClimber climber = new VacuumClimber();
   public static Elevator elevator = new Elevator();
   public static HatchExtender hatchExtender = new HatchExtender();
   public static HatchGrabber hatchGrabber = new HatchGrabber();

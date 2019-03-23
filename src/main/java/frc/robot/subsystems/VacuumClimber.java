@@ -1,4 +1,4 @@
- /*----------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------*/
 /* Copyright (c) 2018 FIRST. All Rights Reserved.                             */
 /* Open Source Software - may be modified and shared by FRC teams. The code   */
 /* must be accompanied by the FIRST BSD license file in the root directory of */
@@ -7,31 +7,35 @@
 
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-import frc.robot.commands.RunClimberManual;
+
+/**
+ * Add your docs here.
+ */
+public class VacuumClimber extends Subsystem {
+  // Put methods for controlling this subsystem
+  // here. Call these from Commands.
+  TalonSRX climber = new TalonSRX(12);
+  TalonSRX climberSlave = new TalonSRX(13);
 
 
+  public VacuumClimber(){
 
-public class Climber extends Subsystem {
+    climberSlave.follow(climber);
+    
+    climber.configNominalOutputForward(0, 0);
+		climber.configNominalOutputReverse(0, 0);
+		climber.configPeakOutputForward(.5, 0);
+    climber.configPeakOutputReverse(-.5, 0);
 
-  TalonSRX climberLeader = new TalonSRX(3);
-  TalonSRX climberFollower = new TalonSRX(12);
+  }
 
-public Climber(){
-  climberFollower.follow(climberLeader);
-}
-  
+
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
-    setDefaultCommand(new RunClimberManual());
+    // setDefaultCommand(new MySpecialCommand());
   }
-
-  public void DriveClimber(double output){
-    climberLeader.set(ControlMode.PercentOutput, output);
-  }
-
 }
