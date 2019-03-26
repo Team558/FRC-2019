@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class HatchExtender extends Subsystem {
 
-  DoubleSolenoid quackLauncher = new DoubleSolenoid(2, 3);
+  DoubleSolenoid quackLauncher = new DoubleSolenoid(4, 5);
 
   public void fireQuackLauncher(){
     quackLauncher.set(Value.kForward);

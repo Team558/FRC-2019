@@ -18,7 +18,7 @@ public class CargoTater extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
-  DoubleSolenoid cargotron = new DoubleSolenoid(4, 5);
+  DoubleSolenoid cargotron = new DoubleSolenoid(2, 3);
 
   public void intakeDown(){
 
