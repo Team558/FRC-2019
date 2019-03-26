@@ -27,7 +27,7 @@ public class CargoDetect extends Command {
 
     if(Robot.cargoDetector.readSensor()){
 
-      Robot.m_oi.setrumble(.95);
+      Robot.m_oi.setrumble(0);
 
     }
     else{
