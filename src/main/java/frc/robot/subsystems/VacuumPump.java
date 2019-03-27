@@ -7,34 +7,27 @@
 
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-
+import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
  * Add your docs here.
  */
-public class VacuumClimber extends Subsystem {
-  // Put methods for controlling this subsystem
-  // here. Call these from Commands.
-  TalonSRX climber = new TalonSRX(12);
-  TalonSRX climberSlave = new TalonSRX(13);
+public class VacuumPump extends Subsystem {
+  
+  VictorSP pump1 = new VictorSP(8);
+  VictorSP pump2 = new VictorSP(9);
 
 
-  public VacuumClimber(){
-
-    climberSlave.follow(climber);
-
-    climber.setInverted(false);
-    climberSlave.setInverted(true);
-    
-    climber.configNominalOutputForward(0, 0);
-		climber.configNominalOutputReverse(0, 0);
-		climber.configPeakOutputForward(1.0, 0);
-    climber.configPeakOutputReverse(-1.0, 0);
-
+  public void runPumps(){
+    pump1.set(.3);
+    pump2.set(.3);
   }
 
+  public void stopPumps(){
+    pump1.set(0);
+    pump2.set(0);
+  }
 
   @Override
   public void initDefaultCommand() {
