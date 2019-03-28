@@ -8,14 +8,12 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import frc.robot.Robot;
 
-public class CargoAcutate extends Command {
-  public CargoAcutate() {
+public class RunManualClimber extends Command {
+  public RunManualClimber() {
     // Use requires() here to declare subsystem dependencies
-    requires(Robot.cargoTater);
-    
+    requires(Robot.climber);
   }
 
   // Called just before this Command runs the first time
@@ -26,20 +24,8 @@ public class CargoAcutate extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-
-    //if(Robot.hatchExtender.getLauncherValue() == Value.kForward){
-
-      //Robot.cargoTater.intakeUp();
-
-    //}
-    //else{
-
-      Robot.cargoTater.intakeDown();
-
-    //}
-    
-
-
+   // Robot.pump.runPumps();
+   // Robot.climber.runClimber(Robot.m_oi.GetClimberAxis());
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -57,8 +43,5 @@ public class CargoAcutate extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-
-    Robot.cargoTater.intakeUp();
-    
   }
 }

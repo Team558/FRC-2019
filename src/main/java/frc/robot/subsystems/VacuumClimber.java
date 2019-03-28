@@ -7,9 +7,11 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.commands.RunManualClimber;
 
 /**
  * Add your docs here.
@@ -18,12 +20,12 @@ public class VacuumClimber extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
   TalonSRX climber = new TalonSRX(12);
-  TalonSRX climberSlave = new TalonSRX(13);
+  TalonSRX climberSlave = new TalonSRX(3);
 
 
   public VacuumClimber(){
 
-    climberSlave.follow(climber);
+    //climberSlave.follow(climber);
 
     climber.setInverted(false);
     climberSlave.setInverted(true);
@@ -35,10 +37,15 @@ public class VacuumClimber extends Subsystem {
 
   }
 
+  public void runClimber(double speed){
+    climber.set(ControlMode.PercentOutput, speed);
+    climberSlave.set(ControlMode.PercentOutput, speed);
+  }
+
 
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
+    setDefaultCommand(new RunManualClimber());
   }
 }

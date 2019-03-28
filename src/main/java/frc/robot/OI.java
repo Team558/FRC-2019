@@ -83,7 +83,7 @@ public class OI {
 		}
 		
 		public double GetClimberAxis(){
-			return operatorStick.getRawAxis(5);
+			return DriveJoystick.getRawAxis(5);
 		}
 		public double GetElevatorAxis(){
 			return operatorStick.getRawAxis(1);
@@ -107,4 +107,8 @@ public class OI {
 			}
 
 
+			public boolean GetPixyDrive(){
+				return DriveJoystick.getRawButton(1);
+			  }
+		  
 }

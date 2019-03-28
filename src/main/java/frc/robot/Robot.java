@@ -18,6 +18,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.subsystems.Camera;
 import frc.robot.subsystems.CargoDetector;
 import frc.robot.subsystems.CargoIntake;
 import frc.robot.subsystems.CargoTater;
@@ -27,12 +28,14 @@ import frc.robot.subsystems.Elevator;
 import frc.robot.subsystems.HatchExtender;
 import frc.robot.subsystems.HatchGrabber;
 import frc.robot.subsystems.VacuumClimber;
+import frc.robot.subsystems.VacuumPump;
 
 public class Robot extends TimedRobot {
   public static OI m_oi;
   public static CargoIntake cargoIntake = new CargoIntake();
   public static Drivetrain drivetrain = new Drivetrain();
   public static VacuumClimber climber = new VacuumClimber();
+  public static VacuumPump pump = new VacuumPump();
   public static Elevator elevator = new Elevator();
   public static HatchExtender hatchExtender = new HatchExtender();
   public static HatchGrabber hatchGrabber = new HatchGrabber();
@@ -57,16 +60,19 @@ public class Robot extends TimedRobot {
     m_oi = new OI();
     camera = CameraServer.getInstance().startAutomaticCapture();
     //if (camera != null){
-      camera.setResolution(500,375); //640x480 or 500x375
+      camera.setResolution(320,240); //640x480 or 500x375
       camera.setPixelFormat(PixelFormat.kMJPEG);
       camera.setBrightness(40);
       camera.setFPS(20); //10 or 20
-    //}
+
+      //Camera.setup();
+          //}
   }
 
   
   @Override
   public void robotPeriodic() {
+    //Camera.run();
   }
 
   
@@ -78,6 +84,7 @@ public class Robot extends TimedRobot {
   public void disabledPeriodic() {
     Scheduler.getInstance().run();
 
+   
     int val = (int) digitBoard.getPotentiometer();
 
     switch(val){
