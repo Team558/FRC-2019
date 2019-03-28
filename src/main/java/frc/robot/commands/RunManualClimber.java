@@ -25,7 +25,7 @@ public class RunManualClimber extends Command {
   @Override
   protected void execute() {
    // Robot.pump.runPumps();
-   // Robot.climber.runClimber(Robot.m_oi.GetClimberAxis());
+    Robot.climber.runClimber(Robot.m_oi.GetClimberAxis());
   }
 
   // Make this return true when this Command no longer needs to run execute()

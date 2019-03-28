@@ -73,6 +73,8 @@ public class Robot extends TimedRobot {
   @Override
   public void robotPeriodic() {
     //Camera.run();
+
+    
   }
 
   
@@ -128,6 +130,9 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Right Drive Encoder", Robot.drivetrain.readRightEncoder());
     SmartDashboard.putNumber("Left Drive Encoder", Robot.drivetrain.readLeftEncoder());
     SmartDashboard.putBoolean("Cargo Detector", Robot.cargoDetector.readSensor());
+    SmartDashboard.putNumber("climber Encoder", climber.readVacEncoder());
+
+ 
   }
 
   @Override
