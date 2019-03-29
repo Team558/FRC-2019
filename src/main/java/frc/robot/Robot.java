@@ -101,7 +101,7 @@ public class Robot extends TimedRobot {
       case 5:
         digitBoard.writeDigits("MANI");
       case 6:
-        digitBoard.writeDigits("");
+        digitBoard.writeDigits("ANDY");
 
     }
 
