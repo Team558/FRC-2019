@@ -65,6 +65,8 @@ public class Robot extends TimedRobot {
   @Override
   public void robotPeriodic() {
     //Camera.run();
+
+    
   }
 
   
@@ -80,9 +82,18 @@ public class Robot extends TimedRobot {
     int val = (int) digitBoard.getPotentiometer();
 
     switch(val){
-
+      case 1:
+        digitBoard.writeDigits("ADI");
+      case 2:
+        digitBoard.writeDigits("ABUL");
       case 3:
         digitBoard.writeDigits("SHIV");
+      case 4:
+        digitBoard.writeDigits("ALAN");
+      case 5:
+        digitBoard.writeDigits("MANI");
+      case 6:
+        digitBoard.writeDigits("");
 
     }
 
@@ -123,6 +134,9 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Right Drive Encoder", Robot.drivetrain.readRightEncoder());
     SmartDashboard.putNumber("Left Drive Encoder", Robot.drivetrain.readLeftEncoder());
     SmartDashboard.putBoolean("Cargo Detector", Robot.cargoDetector.readSensor());
+    SmartDashboard.putNumber("climber Encoder", climber.readVacEncoder());
+
+ 
   }
 
   @Override

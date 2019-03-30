@@ -8,6 +8,7 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -29,11 +30,20 @@ public class VacuumClimber extends Subsystem {
 
     climber.setInverted(false);
     climberSlave.setInverted(true);
+
+    climberSlave.setSensorPhase(true);
     
+    climberSlave.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 0);
+
     climber.configNominalOutputForward(0, 0);
 		climber.configNominalOutputReverse(0, 0);
 		climber.configPeakOutputForward(1.0, 0);
     climber.configPeakOutputReverse(-1.0, 0);
+
+  }
+  public double readVacEncoder(){
+
+    return climberSlave.getSelectedSensorPosition();
 
   }
 
