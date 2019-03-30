@@ -20,36 +20,67 @@ import frc.robot.commands.RunManualClimber;
 public class VacuumClimber extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  TalonSRX climber = new TalonSRX(12);
-  TalonSRX climberSlave = new TalonSRX(3);
+  TalonSRX climber = new TalonSRX(3);
+  TalonSRX climberSlave = new TalonSRX(12);
+
+  public int midPos = 12000;
+  public int lowPos = 0;
 
 
   public VacuumClimber(){
 
-    //climberSlave.follow(climber);
+    climberSlave.follow(climber);
 
     climber.setInverted(false);
     climberSlave.setInverted(true);
 
-    climberSlave.setSensorPhase(true);
+    climber.setSensorPhase(true);
     
-    climberSlave.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 0);
+    climber.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 0);
 
     climber.configNominalOutputForward(0, 0);
 		climber.configNominalOutputReverse(0, 0);
 		climber.configPeakOutputForward(1.0, 0);
     climber.configPeakOutputReverse(-1.0, 0);
 
+
+    climber.configMotionCruiseVelocity(3300);
+    climber.configMotionAcceleration(8000);
+
+    climber.config_kF(0, .31);
+    climber.config_kP(0, .0967);
+    climber.config_kI(0, 0);
+    climber.config_kD(0, .767);
+
+
   }
   public double readVacEncoder(){
 
-    return climberSlave.getSelectedSensorPosition();
+    return climber.getSelectedSensorPosition();
 
   }
 
+  public void GoToTarget(double encoderPos){
+
+    climber.set(ControlMode.MotionMagic, encoderPos);
+
+  }
+
+  public double readVacEncoderVel(){
+    return climber.getSelectedSensorVelocity();
+  }
+
+  public void resetVacEncoder(){
+
+    climber.setSelectedSensorPosition(0);
+
+  }
+
+
+
   public void runClimber(double speed){
     climber.set(ControlMode.PercentOutput, speed);
-    climberSlave.set(ControlMode.PercentOutput, speed);
+   // climberSlave.set(ControlMode.PercentOutput, speed);
   }
 
 

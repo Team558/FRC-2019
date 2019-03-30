@@ -77,6 +77,7 @@ public class Robot extends TimedRobot {
   @Override
   public void disabledPeriodic() {
     Scheduler.getInstance().run();
+    Robot.pump.stopPumps();
 
    
     int val = (int) digitBoard.getPotentiometer();
@@ -127,7 +128,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
-    this.CompressorHandler();
+    //this.CompressorHandler();
     this.transducerHandler();
     
     SmartDashboard.putNumber("Elevator Encoder", Robot.elevator.GetCurrentPosition());
@@ -135,6 +136,9 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Left Drive Encoder", Robot.drivetrain.readLeftEncoder());
     SmartDashboard.putBoolean("Cargo Detector", Robot.cargoDetector.readSensor());
     SmartDashboard.putNumber("climber Encoder", climber.readVacEncoder());
+    //SmartDashboard.putNumber("Transducer Voltage", transducer.getAverageVoltage());
+    //SmartDashboard.putNumber("Transducer Pressure", transducer.getAveragePressure());
+    SmartDashboard.putNumber("Climber Velocity", climber.readVacEncoderVel());
 
  
   }

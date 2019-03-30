@@ -16,17 +16,17 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class VacuumPump extends Subsystem {
   
   VictorSP pump1 = new VictorSP(8);
-  VictorSP pump2 = new VictorSP(9);
+  //VictorSP pump2 = new VictorSP(9);
 
 
   public void runPumps(){
-    pump1.set(.3);
-    pump2.set(.3);
+    pump1.set(-1.0);
+   // pump2.set(.3);
   }
 
   public void stopPumps(){
     pump1.set(0);
-    pump2.set(0);
+   // pump2.set(0);
   }
 
   @Override
