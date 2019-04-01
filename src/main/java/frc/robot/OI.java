@@ -35,10 +35,10 @@ public class OI {
 		cargoactuate.toggleWhenPressed(new CargoAcutate());
 
 		JoystickButton climbBackButton = new JoystickButton(DriveJoystick, 2);
-		climbBackButton.whileHeld(new LiftButt());
+		//climbBackButton.whileHeld(new LiftButt());
 
 		JoystickButton climberButton = new JoystickButton(DriveJoystick, 3);
-		climberButton.whileHeld(new WheeliBarDownAndUp());
+		//climberButton.whileHeld(new WheeliBarDownAndUp());
 
   }
     
