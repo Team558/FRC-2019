@@ -18,22 +18,33 @@ public class OI {
     XboxController operatorStick = new XboxController(1);
 
     public OI(){
-        JoystickButton DuckBillToggle = new JoystickButton(DriveJoystick, 1);
-        DuckBillToggle.toggleWhenPressed(new FireHatchGrabber());
+
+			JoystickButton DuckBillToggle = new JoystickButton(operatorStick, 1);
+			DuckBillToggle.toggleWhenPressed(new FireHatchGrabber());
+	
+			JoystickButton QuackLauncherToggle = new JoystickButton(operatorStick, 2);
+			QuackLauncherToggle.toggleWhenPressed(new FireHatchExtender());
+
+		JoystickButton elevatorManualMode = new JoystickButton(operatorStick, 8);
+		elevatorManualMode.toggleWhenPressed(new RunElevatorManual());
+		JoystickButton zeroElevator = new JoystickButton(operatorStick, 7);
+		zeroElevator.whenPressed(new ZeroElevator());
+	
+
+		JoystickButton cargoactuate = new JoystickButton(operatorStick, 5);
+		cargoactuate.toggleWhenPressed(new CargoAcutate());
+
+		JoystickButton climbBackButton = new JoystickButton(DriveJoystick, 2);
+		climbBackButton.whileHeld(new LiftButt());
+
+		JoystickButton climberButton = new JoystickButton(DriveJoystick, 3);
+		climberButton.whileHeld(new WheeliBarDownAndUp());
+
+  }
     
-        JoystickButton QuackLauncherToggle = new JoystickButton(DriveJoystick, 2);
-		QuackLauncherToggle.toggleWhenPressed(new FireHatchExtender());
-		
-		JoystickButton cargoIntakeIn = new JoystickButton(operatorStick, 3);
-		cargoIntakeIn.toggleWhenPressed(new CargoIntakeIn());
-		JoystickButton cargoIntakeOut = new JoystickButton(operatorStick, 4);
-		cargoIntakeOut.toggleWhenPressed(new CargoIntakeOut());
-    }
-    
-    //Elm City Drive OI Methods
-		public boolean GetQuickTurn(){
-			return DriveJoystick.getRawButton(RobotMap.quickTurnButton);
-				
+		//Elm City Drive OI Methods
+		public double GetTurn(){
+			return -DriveJoystick.getRawAxis(RobotMap.turnAxis);
 		}
 		public double GetThrottle(){
 			double reverse = DriveJoystick.getRawAxis(RobotMap.throttleForwardAxis);
@@ -53,17 +64,36 @@ public class OI {
 		    		return 0;
 			}
 
-			
-		public double GetTurn(){
-			return DriveJoystick.getRawAxis(RobotMap.turnAxis);
+		public double getPOVElevator(){
+
+			return operatorStick.getPOV();
+
 		}
 		
-		public double GetClimberAxis(){
+		/*public double GetClimberAxis(){
+			return operatorStick.getRawAxis(5);
+		}*/
+		public double GetElevatorAxis(){
 			return operatorStick.getRawAxis(1);
 		}
-		public double GetElevatorAxis(){
-			return operatorStick.getRawAxis(5);
-		}
-		
 
+		public double GetCargoThrottle(){
+			double reverse = operatorStick.getRawAxis(3);
+		   	double forward = operatorStick.getRawAxis(2);
+		    	if ((reverse > .1) && (forward >.1)){
+		    		return 0;
+		    	}
+		    	else if (forward > .1){
+					return forward;
+				}
+				else if (reverse > .1){
+		    		return -reverse;
+		    	}
+		    	else
+		    		return 0;
+			}
+
+			public boolean GetPixyDrive(){
+				return DriveJoystick.getRawButton(1);
+			}
 }

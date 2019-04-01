@@ -10,26 +10,28 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
+/**
+ * Add your docs here.
+ */
+public class ClimberSolenoid extends Subsystem {
+  // Put methods for controlling this subsystem
+  // here. Call these from Commands.
 
-
-public class HatchExtender extends Subsystem {
-
-  Solenoid quackLauncher = new Solenoid(1);
+  Solenoid climber = new Solenoid(4);
   
 
-  public void fireQuackLauncher(){
-    quackLauncher.set(true);
-  }
-  public void retractQuackLauncher(){
-    quackLauncher.set(false);
-  }
-  public boolean readSolenoid(){
 
-    return quackLauncher.get();
+  public void fireClimber(){
+
+    climber.set(true);
+
 
   }
+  public void retractClimber(){
 
-  
+    climber.set(false);
+
+  }
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.

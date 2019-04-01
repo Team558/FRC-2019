@@ -8,13 +8,17 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.OI;
 import frc.robot.Robot;
 
-public class FireHatchExtender extends Command {
+public class MoveElevatorPositions extends Command {
 
-  public FireHatchExtender() {
+  double targetPos;
+
+  public MoveElevatorPositions() {
     // Use requires() here to declare subsystem dependencies
-    requires(Robot.hatchExtender);
+    requires(Robot.elevator);
+    requires(Robot.cargoDetector);
   }
 
   // Called just before this Command runs the first time
@@ -25,8 +29,47 @@ public class FireHatchExtender extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    boolean iHasCargo = Robot.cargoDetector.readSensor();
+    
 
-    Robot.hatchExtender.fireQuackLauncher();
+    if(Robot.m_oi.getPOVElevator() == 180){
+
+      targetPos = Robot.elevator.pickUp;
+
+    }
+    else if(Robot.m_oi.getPOVElevator() == 90){
+
+      if(iHasCargo){
+
+        targetPos = Robot.elevator.midCargo;
+
+      }
+      else{
+
+        targetPos = Robot.elevator.middleGoal;
+
+      }
+    }
+
+    else if(Robot.m_oi.getPOVElevator() == 0){
+
+      if(iHasCargo){
+
+        targetPos = Robot.elevator.topCargo;
+
+      }
+      else{
+
+        targetPos = Robot.elevator.highGoal;
+      }
+    }
+    else if(Robot.m_oi.getPOVElevator() == 270){
+
+      targetPos = Robot.elevator.cargoShip;
+
+    }
+
+    Robot.elevator.GoToTarget(targetPos);
 
   }
 
@@ -45,8 +88,5 @@ public class FireHatchExtender extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    
-    Robot.hatchExtender.retractQuackLauncher();
-    
   }
 }

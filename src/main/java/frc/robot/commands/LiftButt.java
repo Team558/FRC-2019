@@ -10,11 +10,10 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class FireHatchExtender extends Command {
-
-  public FireHatchExtender() {
+public class LiftButt extends Command {
+  public LiftButt() {
     // Use requires() here to declare subsystem dependencies
-    requires(Robot.hatchExtender);
+    requires(Robot.backClimber);
   }
 
   // Called just before this Command runs the first time
@@ -26,7 +25,7 @@ public class FireHatchExtender extends Command {
   @Override
   protected void execute() {
 
-    Robot.hatchExtender.fireQuackLauncher();
+    Robot.backClimber.fireBackClimber();
 
   }
 
@@ -39,14 +38,17 @@ public class FireHatchExtender extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
+
+    Robot.backClimber.retractClimber();
+
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    
-    Robot.hatchExtender.retractQuackLauncher();
-    
+
+    Robot.backClimber.retractClimber();
+
   }
 }

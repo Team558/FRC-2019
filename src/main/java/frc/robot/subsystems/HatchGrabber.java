@@ -7,8 +7,8 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 
@@ -16,13 +16,13 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class HatchGrabber extends Subsystem {
 
-  DoubleSolenoid duckBill = new DoubleSolenoid(0, 1);
+  Solenoid duckBill = new Solenoid(0);
 
   public void fireDuckBill(){
-    duckBill.set(Value.kForward);
+    duckBill.set(true);
   }
   public void retractDuckBill(){
-    duckBill.set(Value.kReverse);
+    duckBill.set(false);
   }
   
 
