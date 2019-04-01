@@ -33,6 +33,7 @@ public class Robot extends TimedRobot {
   public static HatchGrabber hatchGrabber = new HatchGrabber();
   public static CargoTater cargoTater = new CargoTater();
   public static CargoDetector cargoDetector = new CargoDetector();
+  public static Pixy1Cam pixy = new Pixy1Cam();
   public static Digit digitBoard = Digit.getInstance();
   public static UsbCamera camera = null;
 
@@ -95,6 +96,8 @@ public class Robot extends TimedRobot {
         digitBoard.writeDigits("MANI");
       case 6:
         digitBoard.writeDigits("ANDY");
+      case 7:
+        digitBoard.writeDigits("SETH");
 
     }
 
