@@ -25,7 +25,9 @@ public class Robot extends TimedRobot {
   public static CargoIntake cargoIntake = new CargoIntake();
   public static Drivetrain drivetrain = new Drivetrain();
   public static Akunta backClimber = new Akunta();
-  public static Climber climber = new Climber();
+  public static VacuumClimber climber = new VacuumClimber();
+  public static VacuumPump pump = new VacuumPump();
+  public static VacuumSensor transducer = new VacuumSensor();
   public static Elevator elevator = new Elevator();
   public static HatchExtender hatchExtender = new HatchExtender();
   public static HatchGrabber hatchGrabber = new HatchGrabber();
