@@ -24,8 +24,23 @@ public class RunManualClimber extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-   // Robot.pump.runPumps();
+   double currentPressure = Robot.transducer.getAveragePressure();
+   double pressureLimit = -10;
+   boolean manualOverride = Robot.m_oi.vacuumClimberOverride();
+
+   if(manualOverride){
     Robot.climber.runClimber(Robot.m_oi.GetClimberAxis());
+   }
+   
+  else if (currentPressure < pressureLimit){
+   
+    Robot.climber.runClimber(Robot.m_oi.GetClimberAxis());
+  }
+  
+  else {
+    Robot.climber.runClimber(0);
+  }
+
   }
 
   // Make this return true when this Command no longer needs to run execute()

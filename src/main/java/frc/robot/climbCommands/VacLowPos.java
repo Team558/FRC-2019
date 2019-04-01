@@ -26,14 +26,14 @@ public class VacLowPos extends Command {
   @Override
   protected void execute() {
 
-    Robot.climber.GoToTarget(5400);
+    Robot.climber.GoToTarget(2800);
 
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return (Robot.climber.readVacEncoder() == 5100 || isTimedOut());
+    return (Robot.climber.readVacEncoder() == 2500 || isTimedOut());
   }
 
   // Called once after isFinished returns true

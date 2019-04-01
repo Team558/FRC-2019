@@ -136,8 +136,8 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Left Drive Encoder", Robot.drivetrain.readLeftEncoder());
     SmartDashboard.putBoolean("Cargo Detector", Robot.cargoDetector.readSensor());
     SmartDashboard.putNumber("climber Encoder", climber.readVacEncoder());
-    //SmartDashboard.putNumber("Transducer Voltage", transducer.getAverageVoltage());
-    //SmartDashboard.putNumber("Transducer Pressure", transducer.getAveragePressure());
+    SmartDashboard.putNumber("Transducer Voltage", transducer.getAverageVoltage());
+    SmartDashboard.putNumber("Transducer Pressure", transducer.getAveragePressure());
     SmartDashboard.putNumber("Climber Velocity", climber.readVacEncoderVel());
 
  

@@ -104,6 +104,10 @@ public class OI {
 		public double GetElevatorAxis(){
 			return operatorStick.getRawAxis(1);
 		}
+
+		public boolean vacuumClimberOverride(){
+			return DriveJoystick.getRawButton(8);
+		}
 		
 
 		public double GetCargoThrottle(){
