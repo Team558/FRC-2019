@@ -10,7 +10,6 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
-import frc.robot.subsystems.TargetLargest;
 import frc.robot.util.*;
 
 public class ElmCityDrive extends Command {
@@ -33,7 +32,7 @@ public class ElmCityDrive extends Command {
     //boolean isQuickTurn = Robot.m_oi.GetQuickTurn();
 
       double wheelNonLinearity;
-    //Pixy Stuff
+    /*Pixy Stuff
       boolean isPixyDrive = Robot.m_oi.GetPixyDrive();
       double targetsDetected = TargetLargest.theCount;
       double target1X = TargetLargest.largestX;
@@ -56,8 +55,9 @@ public class ElmCityDrive extends Command {
       else{
         wheel = handleDeadband(Robot.m_oi.GetTurn(), wheelDeadband);
       }
+      */
 
-      
+      double wheel = handleDeadband(Robot.m_oi.GetTurn(), wheelDeadband);
       
       double throttle = Robot.m_oi.GetThrottle();
 
