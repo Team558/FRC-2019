@@ -5,15 +5,15 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.climbCommands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class RunManualClimber extends Command {
-  public RunManualClimber() {
+public class TurnOnPumps extends Command {
+  public TurnOnPumps() {
     // Use requires() here to declare subsystem dependencies
-    requires(Robot.climber);
+    // eg. requires(chassis);
   }
 
   // Called just before this Command runs the first time
@@ -24,29 +24,13 @@ public class RunManualClimber extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-   double currentPressure = Robot.transducer.getAveragePressure();
-   double pressureLimit = -10;
-   boolean manualOverride = Robot.m_oi.vacuumClimberOverride();
-
-   if(manualOverride){
-    Robot.climber.runClimber(Robot.m_oi.GetClimberAxis());
-   }
-   
-  else if (currentPressure < pressureLimit){
-   
-    Robot.climber.runClimber(Robot.m_oi.GetClimberAxis());
-  }
-  
-  else {
-    Robot.climber.runClimber(0);
-  }
-
+    Robot.pump.runPumps();
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return true;
   }
 
   // Called once after isFinished returns true

@@ -11,6 +11,7 @@ import edu.wpi.cscore.UsbCamera;
 import edu.wpi.cscore.VideoMode.PixelFormat;
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.Relay.Value;
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -18,17 +19,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.subsystems.Camera;
-import frc.robot.subsystems.CargoDetector;
-import frc.robot.subsystems.CargoIntake;
-import frc.robot.subsystems.CargoTater;
-import frc.robot.subsystems.Digit;
-import frc.robot.subsystems.Drivetrain;
-import frc.robot.subsystems.Elevator;
-import frc.robot.subsystems.HatchExtender;
-import frc.robot.subsystems.HatchGrabber;
-import frc.robot.subsystems.VacuumClimber;
-import frc.robot.subsystems.VacuumPump;
+import frc.robot.subsystems.*;
 
 public class Robot extends TimedRobot {
   public static OI m_oi;
@@ -36,6 +27,7 @@ public class Robot extends TimedRobot {
   public static Drivetrain drivetrain = new Drivetrain();
   public static VacuumClimber climber = new VacuumClimber();
   public static VacuumPump pump = new VacuumPump();
+  public static VacuumSensor transducer = new VacuumSensor();
   public static Elevator elevator = new Elevator();
   public static HatchExtender hatchExtender = new HatchExtender();
   public static HatchGrabber hatchGrabber = new HatchGrabber();
@@ -85,6 +77,7 @@ public class Robot extends TimedRobot {
   @Override
   public void disabledPeriodic() {
     Scheduler.getInstance().run();
+    Robot.pump.stopPumps();
 
    
     int val = (int) digitBoard.getPotentiometer();
@@ -129,17 +122,23 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
+    transducer.turnOnDucer();
   }
 
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
-    this.CompressorHandler();
+    //this.CompressorHandler();
+    this.transducerHandler();
+    
     SmartDashboard.putNumber("Elevator Encoder", Robot.elevator.GetCurrentPosition());
     SmartDashboard.putNumber("Right Drive Encoder", Robot.drivetrain.readRightEncoder());
     SmartDashboard.putNumber("Left Drive Encoder", Robot.drivetrain.readLeftEncoder());
     SmartDashboard.putBoolean("Cargo Detector", Robot.cargoDetector.readSensor());
     SmartDashboard.putNumber("climber Encoder", climber.readVacEncoder());
+    SmartDashboard.putNumber("Transducer Voltage", transducer.getAverageVoltage());
+    SmartDashboard.putNumber("Transducer Pressure", transducer.getAveragePressure());
+    SmartDashboard.putNumber("Climber Velocity", climber.readVacEncoderVel());
 
  
   }
@@ -155,8 +154,15 @@ public class Robot extends TimedRobot {
 		}
 		else {
 			compressor.set(Value.kOff);
-		}
+    }
 		
+  }
+
+  public void transducerHandler(){
+    if (transducer.getAverageVoltage() > 7){
+      transducer.turnOffDucer();
+      DriverStation.reportError("Transducer Error: Excessive Voltage Check Resistor Setup", true);
+    }
   }
   
 }

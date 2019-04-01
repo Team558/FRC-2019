@@ -10,8 +10,8 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class RunManualClimber extends Command {
-  public RunManualClimber() {
+public class ZeroVac extends Command {
+  public ZeroVac() {
     // Use requires() here to declare subsystem dependencies
     requires(Robot.climber);
   }
@@ -24,22 +24,8 @@ public class RunManualClimber extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-   double currentPressure = Robot.transducer.getAveragePressure();
-   double pressureLimit = -10;
-   boolean manualOverride = Robot.m_oi.vacuumClimberOverride();
 
-   if(manualOverride){
-    Robot.climber.runClimber(Robot.m_oi.GetClimberAxis());
-   }
-   
-  else if (currentPressure < pressureLimit){
-   
-    Robot.climber.runClimber(Robot.m_oi.GetClimberAxis());
-  }
-  
-  else {
-    Robot.climber.runClimber(0);
-  }
+    Robot.climber.resetVacEncoder();
 
   }
 

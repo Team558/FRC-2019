@@ -14,7 +14,11 @@ import frc.robot.commands.CargoAcutate;
 import frc.robot.commands.FireHatchExtender;
 import frc.robot.commands.FireHatchGrabber;
 import frc.robot.commands.RunElevatorManual;
+import frc.robot.climbCommands.ClimbSequence;
+import frc.robot.climbCommands.VacLowPos;
+import frc.robot.climbCommands.VacMidPos;
 import frc.robot.commands.ZeroElevator;
+import frc.robot.commands.ZeroVac;
 
 public class OI {
 
@@ -25,18 +29,30 @@ public class OI {
         JoystickButton DuckBillToggle = new JoystickButton(operatorStick, 1);
         DuckBillToggle.toggleWhenPressed(new FireHatchGrabber());
     
-      JoystickButton QuackLauncherToggle = new JoystickButton(operatorStick, 2);
-			QuackLauncherToggle.toggleWhenPressed(new FireHatchExtender());
+      	JoystickButton QuackLauncherToggle = new JoystickButton(operatorStick, 2);
+		QuackLauncherToggle.toggleWhenPressed(new FireHatchExtender());
 
 		JoystickButton elevatorManualMode = new JoystickButton(operatorStick, 8);
 		elevatorManualMode.toggleWhenPressed(new RunElevatorManual());
+
 		JoystickButton zeroElevator = new JoystickButton(operatorStick, 7);
 		zeroElevator.whenPressed(new ZeroElevator());
 		
 
 		JoystickButton cargoactuate = new JoystickButton(operatorStick, 5);
 		cargoactuate.toggleWhenPressed(new CargoAcutate());
-		}
+
+		JoystickButton zeroVac = new JoystickButton(DriveJoystick, 7);
+		zeroVac.whenPressed(new ZeroVac());
+
+
+		//JoystickButton vacMidPos = new JoystickButton(DriveJoystick, 6);
+		//vacMidPos.whenPressed(new VacMidPos());
+
+		JoystickButton climbDeploy = new JoystickButton(DriveJoystick, 5);
+		climbDeploy.whenPressed(new ClimbSequence());
+
+	}
 		
 		//Haptic Feedback 
 		public void setrumble(double rumble){
@@ -88,6 +104,10 @@ public class OI {
 		public double GetElevatorAxis(){
 			return operatorStick.getRawAxis(1);
 		}
+
+		public boolean vacuumClimberOverride(){
+			return DriveJoystick.getRawButton(8);
+		}
 		
 
 		public double GetCargoThrottle(){
@@ -110,5 +130,15 @@ public class OI {
 			public boolean GetPixyDrive(){
 				return DriveJoystick.getRawButton(1);
 			  }
+			public boolean getMidPosition(){
+
+				return DriveJoystick.getRawButton(6);
+
+			}
+			public boolean getLowPosition(){
+
+				return DriveJoystick.getRawButton(5);
+
+			}
 		  
 }

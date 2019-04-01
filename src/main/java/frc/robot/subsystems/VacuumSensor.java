@@ -7,31 +7,40 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.VictorSP;
+import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-/**
- * Add your docs here.
- */
-public class VacuumPump extends Subsystem {
-  
-  VictorSP pump1 = new VictorSP(8);
-  //VictorSP pump2 = new VictorSP(9);
 
+public class VacuumSensor extends Subsystem {
 
-  public void runPumps(){
-    pump1.set(-1.0);
-   // pump2.set(.3);
+  Solenoid powerTheDucer = new Solenoid(6);
+  AnalogInput theDucer = new AnalogInput(0);
+
+  public double getAverageVoltage(){
+    return theDucer.getAverageVoltage();
   }
 
-  public void stopPumps(){
-    pump1.set(0);
-   // pump2.set(0);
+  public double getAveragePressure(){
+    double aVoltage = this.getAverageVoltage();
+    return  ((aVoltage * 11.175) - 25.875);
   }
+
+  public void turnOnDucer(){
+    powerTheDucer.set(true);
+  }
+
+  public void turnOffDucer(){
+    powerTheDucer.set(false);
+  }
+
+
+
+
 
   @Override
   public void initDefaultCommand() {
-    // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
+
+
   }
 }
