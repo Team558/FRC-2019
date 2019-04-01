@@ -7,10 +7,14 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import frc.robot.commands.*;
+import frc.robot.commands.CargoAcutate;
+import frc.robot.commands.FireHatchExtender;
+import frc.robot.commands.FireHatchGrabber;
+import frc.robot.commands.RunElevatorManual;
+import frc.robot.commands.ZeroElevator;
 
 public class OI {
 
@@ -41,59 +45,90 @@ public class OI {
 		//climberButton.whileHeld(new WheeliBarDownAndUp());
 
   }
-    
-		//Elm City Drive OI Methods
-		public double GetTurn(){
-			return -DriveJoystick.getRawAxis(RobotMap.turnAxis);
-		}
-		public double GetThrottle(){
-			double reverse = DriveJoystick.getRawAxis(RobotMap.throttleForwardAxis);
-		   	double forward = DriveJoystick.getRawAxis(RobotMap.throttleReverseAxis);
+	//Haptic Feedback 
+  	public void setrumble(double rumble){
+			
+		DriveJoystick.setRumble(GenericHID.RumbleType.kLeftRumble, rumble);
+		DriveJoystick.setRumble(GenericHID.RumbleType.kRightRumble, rumble);
+		operatorStick.setRumble(GenericHID.RumbleType.kLeftRumble, rumble);
+		operatorStick.setRumble(GenericHID.RumbleType.kRightRumble, rumble);
+	
+	}
 
-		    	
-		    	if ((reverse > .1) && (forward >.1)){
-		    		return 0;
-		    	}
-		    	else if (forward > .1){
-					return forward;
-				}
-				else if (reverse > .1){
-		    		return -reverse;
-		    	}
-		    	else
-		    		return 0;
-			}
-
-		public double getPOVElevator(){
-
-			return operatorStick.getPOV();
-
-		}
+	//Elm City Drive OI Methods
+	public boolean GetQuickTurn(){
+		return DriveJoystick.getRawButton(RobotMap.quickTurnButton);
 		
-		/*public double GetClimberAxis(){
-			return operatorStick.getRawAxis(5);
-		}*/
-		public double GetElevatorAxis(){
-			return operatorStick.getRawAxis(1);
+	}
+	public double GetThrottle(){
+		double reverse = DriveJoystick.getRawAxis(RobotMap.throttleForwardAxis);
+	   	double forward = DriveJoystick.getRawAxis(RobotMap.throttleReverseAxis);
+
+		
+		if ((reverse > .1) && (forward >.1)){
+			return 0;
 		}
+		else if (forward > .1){
+			return forward;
+		}
+		else if (reverse > .1){
+			return -reverse;
+		}
+		else
+			return 0;
+	}
 
-		public double GetCargoThrottle(){
-			double reverse = operatorStick.getRawAxis(3);
-		   	double forward = operatorStick.getRawAxis(2);
-		    	if ((reverse > .1) && (forward >.1)){
-		    		return 0;
-		    	}
-		    	else if (forward > .1){
-					return forward;
-				}
-				else if (reverse > .1){
-		    		return -reverse;
-		    	}
-		    	else
-		    		return 0;
-			}
+	
+	public double GetTurn(){
+		return -DriveJoystick.getRawAxis(RobotMap.turnAxis);
+	}
 
-			public boolean GetPixyDrive(){
-				return DriveJoystick.getRawButton(1);
-			}
+	public double getPOVElevator(){
+
+		return operatorStick.getPOV();
+
+	}
+
+	public double GetClimberAxis(){
+		return DriveJoystick.getRawAxis(5);
+	}
+	public double GetElevatorAxis(){
+		return operatorStick.getRawAxis(1);
+	}
+
+	public boolean vacuumClimberOverride(){
+		return DriveJoystick.getRawButton(8);
+	}
+
+
+	public double GetCargoThrottle(){
+		double reverse = operatorStick.getRawAxis(RobotMap.throttleForwardAxis);
+	   	double forward = operatorStick.getRawAxis(RobotMap.throttleReverseAxis);
+		if ((reverse > .1) && (forward >.1)){
+			return 0;
+		}
+		else if (forward > .1){
+			return forward;
+		}
+		else if (reverse > .1){
+			return -reverse;
+		}
+		else
+			return 0;
+	}
+
+
+	public boolean GetPixyDrive(){
+		return DriveJoystick.getRawButton(1);
+	}
+	public boolean getMidPosition(){
+
+		return DriveJoystick.getRawButton(6);
+
+	}
+	public boolean getLowPosition(){
+
+		return DriveJoystick.getRawButton(5);
+
+	}
 }
