@@ -66,7 +66,12 @@ public class OI {
 
 		public double getPOVElevator(){
 
+			if(operatorStick == null){
+				return -1;
+			}
+			else{
 			return operatorStick.getPOV();
+		}
 
 		}
 		
