@@ -15,36 +15,42 @@ import frc.robot.commands.FireHatchExtender;
 import frc.robot.commands.FireHatchGrabber;
 import frc.robot.commands.RunElevatorManual;
 import frc.robot.commands.ZeroElevator;
+import frc.robot.commands.ZeroVac;
 
 public class OI {
 
     XboxController DriveJoystick = new XboxController(0);
     XboxController operatorStick = new XboxController(1);
 
-    public OI(){
+	public OI(){
 
-			JoystickButton DuckBillToggle = new JoystickButton(operatorStick, 1);
-			DuckBillToggle.toggleWhenPressed(new FireHatchGrabber());
-	
-			JoystickButton QuackLauncherToggle = new JoystickButton(operatorStick, 2);
-			QuackLauncherToggle.toggleWhenPressed(new FireHatchExtender());
+		JoystickButton DuckBillToggle = new JoystickButton(operatorStick, 1);
+        DuckBillToggle.toggleWhenPressed(new FireHatchGrabber());
+    
+      	JoystickButton QuackLauncherToggle = new JoystickButton(operatorStick, 2);
+		QuackLauncherToggle.toggleWhenPressed(new FireHatchExtender());
 
 		JoystickButton elevatorManualMode = new JoystickButton(operatorStick, 8);
 		elevatorManualMode.toggleWhenPressed(new RunElevatorManual());
+
 		JoystickButton zeroElevator = new JoystickButton(operatorStick, 7);
 		zeroElevator.whenPressed(new ZeroElevator());
-	
+		
 
 		JoystickButton cargoactuate = new JoystickButton(operatorStick, 5);
 		cargoactuate.toggleWhenPressed(new CargoAcutate());
 
-		JoystickButton climbBackButton = new JoystickButton(DriveJoystick, 2);
-		//climbBackButton.whileHeld(new LiftButt());
+		JoystickButton zeroVac = new JoystickButton(DriveJoystick, 7);
+		zeroVac.whenPressed(new ZeroVac());
 
-		JoystickButton climberButton = new JoystickButton(DriveJoystick, 3);
-		//climberButton.whileHeld(new WheeliBarDownAndUp());
 
-  }
+		//JoystickButton vacMidPos = new JoystickButton(DriveJoystick, 6);
+		//vacMidPos.whenPressed(new VacMidPos());
+
+		JoystickButton climbDeploy = new JoystickButton(DriveJoystick, 5);
+		climbDeploy.whenPressed(new ClimbSequence());
+
+  	}
 	//Haptic Feedback 
   	public void setrumble(double rumble){
 			
