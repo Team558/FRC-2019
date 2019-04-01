@@ -15,10 +15,10 @@ import frc.robot.commands.TargetLine;
  */
 public class Pixy2Handler extends Subsystem {
   
-  public double vectorX0 = 0; // X location of tail of vector
-  public double vectorX1 = 0; // X location of head of vector
-  public double vectorY0 = 0; // Y location of tail of vector
-  public double vectorY1 = 0; // Y location of head of vector
+  public static double vectorX0 = 0; // X location of tail of vector
+  public static double vectorX1 = 0; // X location of head of vector
+  public static double vectorY0 = 0; // Y location of tail of vector
+  public static double vectorY1 = 0; // Y location of head of vector
 
   private double xLeftLimit = 0;
   private double xRightLimit = 78;
@@ -56,6 +56,37 @@ public class Pixy2Handler extends Subsystem {
   public double getVectorY1(){
     return vectorY1;
   }
+
+  public static double getTheta(){
+    double theta;
+    if((vectorY0-vectorY1)==0){
+        theta = 0;
+    }
+    else {
+        theta = Math.toDegrees(Math.atan((vectorX1 - vectorX0)/(vectorY0-vectorY1)));
+    }
+    return theta;
+}
+
+public static double getDx(){
+    double dx;
+    dx = ((vectorX1-vectorX0)/2)-39;
+    return dx;
+}
+
+/**
+* Sets wheel adjustment based on pixy line following
+* 
+* @param k1 scaling factor for angle
+ * 
+ * @param k2 scaling factor for x offset
+* 
+* @return wheel adjustment for driving
+*/
+
+public static double getWheel(double k1, double k2){
+    return k1*getTheta()+k2*getDx();
+}
 
 
 
