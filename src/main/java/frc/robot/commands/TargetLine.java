@@ -31,16 +31,13 @@ public class TargetLine extends Command {
 		pixy.getLine().setMode(Pixy2Line.LINE_MODE_WHITE_LINE);
 		pixy.setLamp((byte) 0, (byte) 0);
 		pixy.setLED(0, 0, 0);
-		//frameMid = pixy.getFrameHeight() / 2;
+		
 	}
 
 	@Override
 	protected void execute() {
 		pixy.getLine().getMainFeatures();
 		Vector[] vectors = pixy.getLine().getVectors();
-		double testAngle = 0.0;
-		double testLength = 0.0;
-		int testPosition = 0;
 		if (vectors != null) {
 			for (Vector v : vectors) {
 				Robot.pixy2Handler.setVectorX0(v.getX0());
