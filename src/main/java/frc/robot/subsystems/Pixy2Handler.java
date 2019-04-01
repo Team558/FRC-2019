@@ -15,10 +15,15 @@ import frc.robot.commands.TargetLine;
  */
 public class Pixy2Handler extends Subsystem {
   
-  public double vectorX0 = 0;
-  public double vectorX1 = 0;
-  public double vectorY0 = 0;
-  public double vectorY1 = 0;
+  public double vectorX0 = 0; // X location of tail of vector
+  public double vectorX1 = 0; // X location of head of vector
+  public double vectorY0 = 0; // Y location of tail of vector
+  public double vectorY1 = 0; // Y location of head of vector
+
+  private double xLeftLimit = 0;
+  private double xRightLimit = 78;
+  private double yTopLimit = 0;
+  private double yBottomLimit = 51;
   
 
   public void setVectorX0(double x0){
