@@ -10,6 +10,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.ClimbCommands.ClimbSequence;
 import frc.robot.commands.CargoAcutate;
 import frc.robot.commands.FireHatchExtender;
 import frc.robot.commands.FireHatchGrabber;
