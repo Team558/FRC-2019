@@ -53,10 +53,10 @@ public class Robot extends TimedRobot {
     m_oi = new OI();
     camera = CameraServer.getInstance().startAutomaticCapture();
     //if (camera != null){
-      camera.setResolution(320,240); //640x480 or 500x375
+      camera.setResolution(640,480); //640x480 or 500x375
       camera.setPixelFormat(PixelFormat.kMJPEG);
       camera.setBrightness(40);
-      camera.setFPS(20); //10 or 20
+      camera.setFPS(2); //10 or 20
 
       //Camera.setup();
           //}
@@ -86,18 +86,25 @@ public class Robot extends TimedRobot {
     switch(val){
       case 1:
         digitBoard.writeDigits("ADI");
+        break;
       case 2:
         digitBoard.writeDigits("ABUL");
+        break;
       case 3:
         digitBoard.writeDigits("SHIV");
+        break;
       case 4:
         digitBoard.writeDigits("ALAN");
+        break;
       case 5:
         digitBoard.writeDigits("MANI");
+        break;
       case 6:
         digitBoard.writeDigits("ANDY");
+        break;
       case 7:
         digitBoard.writeDigits("SETH");
+        break;
 
     }
 
@@ -133,6 +140,10 @@ public class Robot extends TimedRobot {
     Scheduler.getInstance().run();
     //this.CompressorHandler();
     this.transducerHandler();
+    this.CompressorHandler();
+    pixy.read();
+
+    SmartDashboard.putNumber("Pixy Offset", pixy.getLastOffset());
     
     SmartDashboard.putNumber("Elevator Encoder", Robot.elevator.GetCurrentPosition());
     SmartDashboard.putNumber("Right Drive Encoder", Robot.drivetrain.readRightEncoder());

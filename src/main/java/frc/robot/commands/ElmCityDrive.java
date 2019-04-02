@@ -40,7 +40,7 @@ public class ElmCityDrive extends Command {
     
   if(isPixyDrive){
     if (Robot.pixy.getLastOffset() != 160){
-      double targetError = 160-(Robot.pixy.getLastOffset());
+      double targetError = 165-(Robot.pixy.getLastOffset());
       double pixyKp = .006;
       double joystickScale = .25;
       wheel = handleDeadband((pixyKp*targetError)+(Robot.m_oi.GetTurn()*.25), pixyWheelDeadband);
