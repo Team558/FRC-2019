@@ -31,7 +31,7 @@ public class ElmCityDrive extends Command {
   protected void execute() {
     //boolean isQuickTurn = Robot.m_oi.GetQuickTurn();
 
-      double wheelNonLinearity;
+    double wheelNonLinearity;
     /*Pixy Stuff
       boolean isPixyDrive = Robot.m_oi.GetPixyDrive();
       double targetsDetected = TargetLargest.theCount;
