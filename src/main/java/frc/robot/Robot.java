@@ -80,6 +80,7 @@ public class Robot extends TimedRobot {
   @Override
   public void disabledPeriodic() {
     Scheduler.getInstance().run();
+    Robot.pump.stopPumps();
   }
 
   
@@ -136,6 +137,12 @@ public class Robot extends TimedRobot {
 			compressor.set(Value.kOff);
 		}
 		
+  }
+  public void transducerHandler(){
+    if (transducer.getAverageVoltage() > 7){
+      transducer.turnOffDucer();
+      DriverStation.reportError("Transducer Error: Excessive Voltage Check Resistor Setup", true);
+    }
   }
   
 }
