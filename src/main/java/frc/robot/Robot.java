@@ -56,7 +56,7 @@ public class Robot extends TimedRobot {
       camera.setResolution(640,480); //640x480 or 500x375
       camera.setPixelFormat(PixelFormat.kMJPEG);
       camera.setBrightness(40);
-      camera.setFPS(2); //10 or 20
+      camera.setFPS(20); //10 or 20
 
       //Camera.setup();
           //}
