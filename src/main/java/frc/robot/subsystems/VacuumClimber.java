@@ -16,18 +16,18 @@ import frc.robot.commands.RunManualClimber;
 
 
 public class VacuumClimber extends Subsystem {
-  TalonSRX climber = new TalonSRX(3);
-  TalonSRX climberSlave = new TalonSRX(12);
+  TalonSRX climber = new TalonSRX(12);
+  TalonSRX climberSlave = new TalonSRX(3);
 
 
   public VacuumClimber(){
 
     climberSlave.follow(climber);
 
-    climber.setInverted(false);
-    climberSlave.setInverted(true);
+    climber.setInverted(true);
+    climberSlave.setInverted(false);
 
-    climber.setSensorPhase(true);
+    climber.setSensorPhase(false);
     
     climber.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 0);
 
