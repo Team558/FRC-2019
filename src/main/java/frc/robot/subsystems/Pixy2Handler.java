@@ -70,7 +70,7 @@ public class Pixy2Handler extends Subsystem {
 
 public static double getDx(){
     double dx;
-    dx = ((vectorX1-vectorX0)/2)-39;
+    dx = ((vectorX1+vectorX0)/2)-39;
     return dx;
 }
 
