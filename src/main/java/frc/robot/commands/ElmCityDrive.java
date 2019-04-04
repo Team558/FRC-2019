@@ -16,6 +16,7 @@ public class ElmCityDrive extends Command {
   private double oldWheel = 0.0;
   private double quickStopAccumulator;
   private double wheelDeadband = 0.1;
+  private double pixyWheelDeadband = .01;
 
   public ElmCityDrive() {
       // Use requires() here to declare subsystem dependencies
@@ -32,32 +33,26 @@ public class ElmCityDrive extends Command {
     //boolean isQuickTurn = Robot.m_oi.GetQuickTurn();
 
     double wheelNonLinearity;
-    /*Pixy Stuff
-      boolean isPixyDrive = Robot.m_oi.GetPixyDrive();
-      double targetsDetected = TargetLargest.theCount;
-      double target1X = TargetLargest.largestX;
-      double target2X = TargetLargest.secondLargestX;
-      double wheel;
-      if(isPixyDrive){
-        if (targetsDetected ==2){
-          double targetCenter = ((target1X+target2X)/2);
-          double targetError = 195-targetCenter;
-          double pixyKp = .006;
-          double joystickScale = .25;
-          wheel = handleDeadband((pixyKp*targetError)+(Robot.m_oi.GetTurn()*joystickScale), wheelDeadband);
-     
-       }
-       else{
-        wheel = handleDeadband(Robot.m_oi.GetTurn(), wheelDeadband);
-       }
+    boolean isPixyDrive = Robot.m_oi.GetPixyDrive();
+    double wheel;
 
-      }
-      else{
-        wheel = handleDeadband(Robot.m_oi.GetTurn(), wheelDeadband);
-      }
-      */
-
-      double wheel = handleDeadband(Robot.m_oi.GetTurn(), wheelDeadband);
+    
+  if(isPixyDrive){
+    if (Robot.pixy.getLastOffset() != 112){
+      double targetError = 112-(Robot.pixy.getLastOffset());
+      double pixyKp = .006;
+      double joystickScale = .25;
+      wheel = handleDeadband((pixyKp*targetError)+(Robot.m_oi.GetTurn()*.25), pixyWheelDeadband);
+    }
+    else{
+      wheel = handleDeadband(Robot.m_oi.GetTurn(), wheelDeadband);
+   
+    }
+  }
+  else {
+    wheel = handleDeadband(Robot.m_oi.GetTurn(), wheelDeadband);
+   
+  }
       
       double throttle = Robot.m_oi.GetThrottle();
 
