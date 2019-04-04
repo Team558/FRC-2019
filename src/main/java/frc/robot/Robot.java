@@ -29,6 +29,7 @@ public class Robot extends TimedRobot {
   public static VacuumPump pump = new VacuumPump();
   public static VacuumSensor transducer = new VacuumSensor();
   public static Elevator elevator = new Elevator();
+  public static Pixy2Handler pixy2Handler = new Pixy2Handler();
   public static HatchExtender hatchExtender = new HatchExtender();
   public static HatchGrabber hatchGrabber = new HatchGrabber();
   public static CargoTater cargoTater = new CargoTater();
@@ -58,14 +59,14 @@ public class Robot extends TimedRobot {
       camera.setBrightness(40);
       camera.setFPS(20); //10 or 20
 
-      //Camera.setup();
+      Camera.setup();
           //}
   }
 
   
   @Override
   public void robotPeriodic() {
-    //Camera.run();
+    Camera.run();
 
     
   }

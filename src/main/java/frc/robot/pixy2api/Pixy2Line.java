@@ -87,6 +87,14 @@ public class Pixy2Line {
 		return getFeatures(LINE_GET_ALL_FEATURES, LINE_ALL_FEATURES, true);
 	}
 
+	public byte getVectorFeatures(){
+		return getFeatures(LINE_GET_ALL_FEATURES, LINE_VECTOR, true);
+	}
+	public byte getMainFeatures() {
+		return getFeatures(LINE_GET_MAIN_FEATURES, LINE_ALL_FEATURES, true);
+	}
+
+
 	/**
 	 * Gets specified features from Pixy2
 	 * 
