@@ -22,7 +22,7 @@ public class TargetLine extends Command {
 	}
 
 	public TargetLine() {
-		//requires(Robot.pixy2Handler);
+		requires(Robot.pixy2Handler);
 	}
 
 	@Override
@@ -40,10 +40,10 @@ public class TargetLine extends Command {
 		Vector[] vectors = pixy.getLine().getVectors();
 		if (vectors != null) {
 			for (Vector v : vectors) {
-				/*Robot.pixy2Handler.setVectorX0(v.getX0());
+				Robot.pixy2Handler.setVectorX0(v.getX0());
 				Robot.pixy2Handler.setVectorX1(v.getX1());
 				Robot.pixy2Handler.setVectorY0(v.getY0());
-				Robot.pixy2Handler.setVectorY1(v.getY1());*/
+				Robot.pixy2Handler.setVectorY1(v.getY1());
 			}
 		}
 	}

@@ -40,7 +40,7 @@ public class Robot extends TimedRobot {
   public static VacuumClimber climber = new VacuumClimber();
   public static VacuumPump pump = new VacuumPump();
   public static VacuumSensor transducer = new VacuumSensor();
-  //public static Pixy2Handler pixy2Handler = new Pixy2Handler();
+  public static Pixy2Handler pixy2Handler = new Pixy2Handler();
   public static Elevator elevator = new Elevator();
   public static HatchExtender hatchExtender = new HatchExtender();
   public static HatchGrabber hatchGrabber = new HatchGrabber();
@@ -78,7 +78,7 @@ public class Robot extends TimedRobot {
   @Override
   public void robotPeriodic() {
 
-    //Camera.run();
+    Camera.run();
     SmartDashboard.putNumber("Elevator Encoder", Robot.elevator.GetElevatorEncoder());
     SmartDashboard.putNumber("Elevator Encoder2", Robot.elevator.GetElevatorEncoder());
     SmartDashboard.putNumber("Climber Encoder", Robot.climber.readVacEncoder());

@@ -93,6 +93,6 @@ public static double getWheel(double k1, double k2){
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
-    //setDefaultCommand(new TargetLine());
+    setDefaultCommand(new TargetLine());
   }
 }
