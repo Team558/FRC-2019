@@ -140,5 +140,10 @@ public class OI {
 				return DriveJoystick.getRawButton(5);
 
 			}
+			public boolean pixy2LineDrive(){
+
+				return DriveJoystick.getRawButton(2);
+
+			}
 		  
 }

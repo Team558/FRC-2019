@@ -68,6 +68,8 @@ public class Robot extends TimedRobot {
   public void robotPeriodic() {
     Camera.run();
     
+    SmartDashboard.putNumber("DX", Robot.pixy2Handler.getDx());
+    SmartDashboard.putNumber("Theta", Robot.pixy2Handler.getTheta());
     
   }
 

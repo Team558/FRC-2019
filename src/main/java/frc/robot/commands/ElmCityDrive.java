@@ -35,24 +35,40 @@ public class ElmCityDrive extends Command {
     
     double wheelNonLinearity;
     boolean isPixyDrive = Robot.m_oi.GetPixyDrive();
+    boolean isPixy2Drive = Robot.m_oi.pixy2LineDrive();
     double wheel;
 
+    if(isPixy2Drive){
+
+      if(Robot.pixy2Handler.getDx() != 3){
+
+        wheel = handleDeadband(Robot.pixy2Handler.getWheel(.006, .006), pixyWheelDeadband);
+
+      }
+      else{
+
+        wheel = handleDeadband(Robot.m_oi.GetTurn(), wheelDeadband);
+
+      }
+
+    }
     
-  if(isPixyDrive){
-    if (Robot.pixy.getLastOffset() != 112){
-      double targetError = 112-(Robot.pixy.getLastOffset());
-      double pixyKp = .006;
-      double joystickScale = .25;
-      wheel = handleDeadband((pixyKp*targetError)+(Robot.m_oi.GetTurn()*.25), pixyWheelDeadband);
-    }
-    else{
-      wheel = handleDeadband(Robot.m_oi.GetTurn(), wheelDeadband);
+    else if(isPixyDrive){
+      if (Robot.pixy.getLastOffset() != 130){
+       double targetError = 130-(Robot.pixy.getLastOffset());
+       double pixyKp = .006;
+        double joystickScale = .25;
+        wheel = handleDeadband((pixyKp*targetError)+(Robot.m_oi.GetTurn()*.25), pixyWheelDeadband);
+      }
+      else{
+        wheel = handleDeadband(Robot.m_oi.GetTurn(), wheelDeadband);
    
-    }
+     }
   }
-  else {
+  else{
+
     wheel = handleDeadband(Robot.m_oi.GetTurn(), wheelDeadband);
-   
+
   }
  
    

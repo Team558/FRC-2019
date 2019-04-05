@@ -65,7 +65,7 @@ public class Pixy2Handler extends Subsystem {
     else {
         theta = Math.toDegrees(Math.atan((vectorX1 - vectorX0)/(vectorY0-vectorY1)));
     }
-    return theta;
+    return (theta-25);
 }
 
 public static double getDx(){
