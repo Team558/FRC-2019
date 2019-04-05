@@ -51,20 +51,6 @@ public class BobPathCreator extends AbstractBobPathCreator {
 	 */
 	private List<BobPath> generateTeamPaths() {
 
-		 BobPath flower = new BobPath(config, "Flower");
-		 flower.addWaypoint(10, 10, 0, 0, 0);
-		 flower.addWaypoint(12, 12, 45, 2, 2);
-		 flower.addWaypoint(14, 14, 90, 2, 2);
-		 flower.addWaypoint(12, 16, 135, 2, 2);
-		 flower.addWaypoint(10, 18, 180, 2, 2);
-		 flower.addWaypoint(8, 16, 225, 2, 2);
-		 flower.addWaypoint(6, 14, 270, 2, 2);
-		 flower.addWaypoint(8, 12, 315, 2, 2);
-		 flower.addWaypoint(10, 10, 0, 0, 2);
-
-		 BobPath imageCalibrator = new BobPath(config, "ImageCalibrator");
-		 imageCalibrator.addWaypoint(startingPoint);
-
 		 BobPath nate = new BobPath(config, "test");
 		 nate.addWaypoint(2, 9.7, 0);
 		 nate.addWaypointRelative(10, 0, -10, 0, 7);
