@@ -65,7 +65,6 @@ public class BobPathCreator extends AbstractBobPathCreator {
 		 TurnScaling.addWaypointRelative(3, 3, 89.99);
 		 return asList (nate); // return asList(path1, path2, path3, ...);*/
 	}
-	
 	public static void main(String[] args) {
 		new BobPathCreator().generatePaths();
 	}
