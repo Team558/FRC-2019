@@ -27,7 +27,7 @@ public class VacuumClimber extends Subsystem {
     climber.setInverted(true);
     climberSlave.setInverted(false);
 
-    climber.setSensorPhase(false);
+    climber.setSensorPhase(true);
     
     climber.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 0);
 
@@ -36,12 +36,15 @@ public class VacuumClimber extends Subsystem {
 		climber.configPeakOutputForward(1.0, 0);
     climber.configPeakOutputReverse(-1.0, 0);
 
+    climber.configPeakCurrentLimit(40);
+    climberSlave.configPeakCurrentLimit(40);
+
 
     climber.configMotionCruiseVelocity(3300);
-    climber.configMotionAcceleration(8000);
+    climber.configMotionAcceleration(10000);
 
     climber.config_kF(0, .31);
-    climber.config_kP(0, .0967);
+    climber.config_kP(0, .12);
     climber.config_kI(0, 0);
     climber.config_kD(0, .767);
 
@@ -50,6 +53,11 @@ public class VacuumClimber extends Subsystem {
   public double readVacEncoder(){
 
     return climber.getSelectedSensorPosition();
+
+  }
+  public double MotorOutputClimber(){
+
+    return climber.getMotorOutputVoltage();
 
   }
 

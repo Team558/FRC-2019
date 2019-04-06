@@ -138,6 +138,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Elevator Encoder2", Robot.elevator.GetElevatorEncoder());
     SmartDashboard.putNumber("Right Drive Encoder", Robot.drivetrain.readRightEncoder());
     SmartDashboard.putNumber("Left Drive Encoder", Robot.drivetrain.readLeftEncoder());
+    SmartDashboard.putNumber("Vac Motor Output", Robot.climber.MotorOutputClimber());
     
   }
 

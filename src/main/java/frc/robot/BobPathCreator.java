@@ -51,10 +51,13 @@ public class BobPathCreator extends AbstractBobPathCreator {
 	 */
 	private List<BobPath> generateTeamPaths() {
 
-		 BobPath nate = new BobPath(config, "test");
+		 BobPath nate = new BobPath(config, "cargoShipAuto");
 		 nate.addWaypoint(2, 9.7, 0);
-		 nate.addWaypointRelative(10, 0, -10, 0, 7);
-		 nate.addWaypointRelative(4, 0, 25, 0, 7);
+		 nate.addWaypointRelative(10, 0, -5, 0, 7);
+		 nate.addWaypointRelative(4, -2, 0, 0, 7);
+		 nate.addWaypointRelative(6, -1, 30, 0, 7);
+		 nate.addWaypointRelative(1, .6, 30, 0, 7);
+		 nate.addWaypointRelative(1.4, 1, 35, 0, 7);
 
 		 BobPath DriveForwardThreeFeet = new BobPath(config, "DriveForwardThreeFeet", false);
 		 DriveForwardThreeFeet.addWaypoint(startingPoint);

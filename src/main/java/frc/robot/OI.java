@@ -97,7 +97,7 @@ public class OI {
 	}
 
 	public double GetClimberAxis(){
-		return DriveJoystick.getRawAxis(5);
+		return -DriveJoystick.getRawAxis(5);
 	}
 	public double GetElevatorAxis(){
 		return operatorStick.getRawAxis(1);
