@@ -104,13 +104,13 @@ public class OI {
 	}
 
 	public boolean vacuumClimberOverride(){
-		return DriveJoystick.getRawButton(8);
+		return DriveJoystick.getRawButton(6);
 	}
 
 
 	public double GetCargoThrottle(){
-		double reverse = operatorStick.getRawAxis(RobotMap.throttleForwardAxis);
-	   	double forward = operatorStick.getRawAxis(RobotMap.throttleReverseAxis);
+		double reverse = operatorStick.getRawAxis(3);
+	   	double forward = operatorStick.getRawAxis(2);
 		if ((reverse > .1) && (forward >.1)){
 			return 0;
 		}
@@ -136,6 +136,11 @@ public class OI {
 	public boolean getLowPosition(){
 
 		return DriveJoystick.getRawButton(5);
+
+	}
+	public boolean pixy2LineDrive(){
+
+		return DriveJoystick.getRawButton(2);
 
 	}
 }

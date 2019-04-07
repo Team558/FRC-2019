@@ -86,6 +86,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Climber Encoder", Robot.climber.readVacEncoder());
     SmartDashboard.putBoolean("Cargo Detector", Robot.cargoDetector.readSensor());
     SmartDashboard.putNumber("Transducer Pressure", Robot.transducer.getAveragePressure());
+    SmartDashboard.putNumber("DX", Robot.pixy2Handler.getDx());
   }
 
   
