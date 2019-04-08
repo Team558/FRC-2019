@@ -71,7 +71,9 @@ public class Robot extends TimedRobot {
     camera.setBrightness(40);
     camera.setFPS(20); //10 or 20
 
-    Camera.setup();
+    //Camera.setup();
+
+    
 
     drivetrain.setRampRate();
   }
@@ -80,13 +82,18 @@ public class Robot extends TimedRobot {
   @Override
   public void robotPeriodic() {
 
-    Camera.run();
+    //Camera.run();
+
+    
     SmartDashboard.putNumber("Elevator Encoder", Robot.elevator.GetElevatorEncoder());
     SmartDashboard.putNumber("Elevator Encoder2", Robot.elevator.GetElevatorEncoder());
     SmartDashboard.putNumber("Climber Encoder", Robot.climber.readVacEncoder());
     SmartDashboard.putBoolean("Cargo Detector", Robot.cargoDetector.readSensor());
     SmartDashboard.putNumber("Transducer Pressure", Robot.transducer.getAveragePressure());
-    SmartDashboard.putNumber("DX", Robot.pixy2Handler.getDx());
+    //SmartDashboard.putNumber("pixy offset", Robot.pixy.getLastOffset());
+    //SmartDashboard.putNumber("DX", Robot.pixy2Handler.getDx());
+    //SmartDashboard.putNumber("Theta", Robot.pixy2Handler.getTheta());
+    //Robot.pixy.read();
   }
 
   
@@ -120,6 +127,7 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousPeriodic() {
     Scheduler.getInstance().run();
+    //Robot.pixy.read();
     this.CompressorHandler();
   }
 
@@ -140,6 +148,8 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Right Drive Encoder", Robot.drivetrain.readRightEncoder());
     SmartDashboard.putNumber("Left Drive Encoder", Robot.drivetrain.readLeftEncoder());
     SmartDashboard.putNumber("Vac Motor Output", Robot.climber.MotorOutputClimber());
+    SmartDashboard.putNumber("pixy offset", Robot.pixy.getLastOffset());
+    //Robot.pixy.read();
     
   }
 

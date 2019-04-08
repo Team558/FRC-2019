@@ -36,12 +36,11 @@ public class ElmCityDrive extends Command {
     boolean isPixyDrive = Robot.m_oi.GetPixyDrive();
     boolean isPixy2Drive = Robot.m_oi.pixy2LineDrive();
     double wheel;
-
-  if(isPixy2Drive){
+    if(isPixy2Drive){
 
       if(Robot.pixy2Handler.getDx() != 0){
 
-        wheel = handleDeadband(Robot.pixy2Handler.getWheel(0, .006), pixyWheelDeadband);
+        wheel = handleDeadband(Robot.pixy2Handler.getWheel(.006, .006), pixyWheelDeadband);
 
       }
       else{
@@ -50,10 +49,10 @@ public class ElmCityDrive extends Command {
 
       }
 
-    }  
-  if(isPixyDrive){
-    if (Robot.pixy.getLastOffset() != 130){
-      double targetError = 130-(Robot.pixy.getLastOffset());
+    }
+  else if(isPixyDrive){
+    if (Robot.pixy.getLastOffset() != 118){
+      double targetError = 118-(Robot.pixy.getLastOffset());
       double pixyKp = .006;
       double joystickScale = .25;
       wheel = handleDeadband((pixyKp*targetError)+(Robot.m_oi.GetTurn()*.25), pixyWheelDeadband);
