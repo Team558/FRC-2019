@@ -37,22 +37,9 @@ public class ElmCityDrive extends Command {
     double wheel;
 
     
-  if(isPixyDrive){
-    if (Robot.pixy.getLastOffset() != 112){
-      double targetError = 112-(Robot.pixy.getLastOffset());
-      double pixyKp = .006;
-      double joystickScale = .25;
-      wheel = handleDeadband((pixyKp*targetError)+(Robot.m_oi.GetTurn()*.25), pixyWheelDeadband);
-    }
-    else{
-      wheel = handleDeadband(Robot.m_oi.GetTurn(), wheelDeadband);
-   
-    }
-  }
-  else {
     wheel = handleDeadband(Robot.m_oi.GetTurn(), wheelDeadband);
    
-  }
+  
       
       double throttle = Robot.m_oi.GetThrottle();
 

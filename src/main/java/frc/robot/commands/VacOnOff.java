@@ -5,15 +5,15 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.ClimbCommands;
+package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class VacLowPos extends Command {
-  public VacLowPos() {
-    requires(Robot.climber);
-    setTimeout(.75);
+public class VacOnOff extends Command {
+  public VacOnOff() {
+    // Use requires() here to declare subsystem dependencies
+    requires(Robot.pump);
   }
 
   // Called just before this Command runs the first time
@@ -25,24 +25,30 @@ public class VacLowPos extends Command {
   @Override
   protected void execute() {
 
-    Robot.climber.GoToTarget(4800);
+    Robot.pump.runPumps();
 
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return (Robot.climber.readVacEncoder() == 4500 || isTimedOut());
+    return false;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
+
+    Robot.pump.stopPumps();
+
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+
+    Robot.pump.stopPumps();
+
   }
 }
