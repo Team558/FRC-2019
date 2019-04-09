@@ -51,13 +51,17 @@ public class BobPathCreator extends AbstractBobPathCreator {
 	 */
 	private List<BobPath> generateTeamPaths() {
 
-		 BobPath nate = new BobPath(config, "cargoShipAuto");
+		 BobPath nate = new BobPath(config, "cargoShipAutoRight");
 		 nate.addWaypoint(2, 9.7, 0);
 		 nate.addWaypointRelative(10, 0, -5, 0, 7);
 		 nate.addWaypointRelative(4, -2, 0, 0, 7);
 		 nate.addWaypointRelative(6, -1, 30, 0, 7);
 		 nate.addWaypointRelative(1, .6, 30, 0, 7);
 		 nate.addWaypointRelative(1.4, 1, 35, 0, 7);
+
+		 BobPath cargoShipAutoLeft = new BobPath(config, "cargoShipAutoLeft");
+		 cargoShipAutoLeft.addWaypoint(2, 17 ,0);
+		 cargoShipAutoLeft.addWaypointRelative(1, 0, 0);
 
 		 BobPath DriveForwardThreeFeet = new BobPath(config, "DriveForwardThreeFeet", false);
 		 DriveForwardThreeFeet.addWaypoint(startingPoint);
@@ -66,7 +70,7 @@ public class BobPathCreator extends AbstractBobPathCreator {
 		 BobPath TurnScaling = new BobPath(config, "TurnScaling", false);
 		 TurnScaling.addWaypoint(startingPoint);
 		 TurnScaling.addWaypointRelative(3, 3, 89.99);
-		 return asList (nate); // return asList(path1, path2, path3, ...);*/
+		 return asList (cargoShipAutoLeft); // return asList(path1, path2, path3, ...);*/
 	}
 	public static void main(String[] args) {
 		new BobPathCreator().generatePaths();
