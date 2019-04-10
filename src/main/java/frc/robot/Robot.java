@@ -68,6 +68,7 @@ public class Robot extends TimedRobot {
     camera.setBrightness(40);
     camera.setFPS(20); //10 or 20
 
+    this.limeLight.setStream(0);
 
     drivetrain.setRampRate();
   }

@@ -39,12 +39,14 @@ public class ElmCityDrive extends Command {
     double wheel;
     
     if(getLimeDrive){
+     // Robot.limeLight.setLEDMode(3);
+      wheel = (limeError*limeKP)+(driverKP*(handleDeadband(Robot.m_oi.GetTurn(), wheelDeadband)));
 
-      wheel = (limeError*limeKP)+(handleDeadband(Robot.m_oi.GetTurn(), wheelDeadband));
 
     }
     else{
-
+      
+     // Robot.limeLight.setLEDMode(1);
       wheel = handleDeadband(Robot.m_oi.GetTurn(), wheelDeadband);
 
     }
