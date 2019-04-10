@@ -113,13 +113,8 @@ public class OI {
 
 
 	public double GetCargoThrottle(){
-<<<<<<< HEAD
-	   	double reverse = operatorStick.getRawAxis(3);
-		double forward = operatorStick.getRawAxis(2);
-=======
 		double reverse = operatorStick.getRawAxis(3);
 	   	double forward = operatorStick.getRawAxis(2);
->>>>>>> a14abfb84202bf566e3afc4251baf65b3e811ba3
 		if ((reverse > .1) && (forward >.1)){
 			return 0;
 		}
