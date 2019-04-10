@@ -38,9 +38,6 @@ public class ElmCityDrive extends Command {
     double wheel;
     if(isPixy2Drive){
 
-<<<<<<< HEAD
-    
-=======
       if(Robot.pixy2Handler.getDx() != 0){
 
         wheel = handleDeadband(Robot.pixy2Handler.getWheel(.006, .006), pixyWheelDeadband);
@@ -66,7 +63,6 @@ public class ElmCityDrive extends Command {
     }
   }
   else {
->>>>>>> a14abfb84202bf566e3afc4251baf65b3e811ba3
     wheel = handleDeadband(Robot.m_oi.GetTurn(), wheelDeadband);
    
   
@@ -170,7 +166,7 @@ public class ElmCityDrive extends Command {
 
       Robot.drivetrain.drive(leftPwm, rightPwm);
   }
-    
+}
   public double handleDeadband(double val, double deadband) {
       return (Math.abs(val) > Math.abs(deadband)) ? val : 0.0;
     }
