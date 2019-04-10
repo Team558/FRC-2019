@@ -27,6 +27,7 @@ import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Elevator;
 import frc.robot.subsystems.HatchExtender;
 import frc.robot.subsystems.HatchGrabber;
+import frc.robot.subsystems.Limelight;
 import frc.robot.subsystems.VacuumClimber;
 import frc.robot.subsystems.VacuumPump;
 import frc.robot.subsystems.VacuumSensor;
@@ -38,6 +39,7 @@ public class Robot extends TimedRobot {
   public static VacuumClimber climber = new VacuumClimber();
   public static VacuumPump pump = new VacuumPump();
   public static VacuumSensor transducer = new VacuumSensor();
+  public static Limelight limeLight = new Limelight();
   public static Elevator elevator = new Elevator();
   public static HatchExtender hatchExtender = new HatchExtender();
   public static HatchGrabber hatchGrabber = new HatchGrabber();
