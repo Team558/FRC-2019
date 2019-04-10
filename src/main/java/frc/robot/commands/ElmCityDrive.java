@@ -30,7 +30,6 @@ public class ElmCityDrive extends Command {
 
   // Called repeatedly when this Command is scheduled to run
   protected void execute() {
-    //boolean isQuickTurn = Robot.m_oi.GetQuickTurn();
 
     double wheelNonLinearity;
     double wheel = handleDeadband(Robot.m_oi.GetTurn(), wheelDeadband);
