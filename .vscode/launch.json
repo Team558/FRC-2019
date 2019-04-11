@@ -9,6 +9,13 @@
       "name": "CodeLens (Launch) - BobPathCreator",
       "request": "launch",
       "mainClass": "frc.robot.BobPathCreator",
+      "projectName": "FRC-2019"
+    },
+    {
+      "type": "java",
+      "name": "CodeLens (Launch) - BobPathCreator",
+      "request": "launch",
+      "mainClass": "frc.robot.BobPathCreator",
       "projectName": "FRC 2019"
     },
     {

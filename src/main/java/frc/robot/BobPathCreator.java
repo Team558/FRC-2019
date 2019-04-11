@@ -60,7 +60,7 @@ public class BobPathCreator extends AbstractBobPathCreator {
 		 nate.addWaypointRelative(1.4, 1, 35, 0, 7);
 
 		 BobPath cargoShipAutoLeft = new BobPath(config, "cargoShipAutoLeft");
-		 cargoShipAutoLeft.addWaypoint(2, 17 ,0);
+		 cargoShipAutoLeft.addWaypoint(2, 0 ,0);
 		 cargoShipAutoLeft.addWaypointRelative(1, 0, 0);
 
 		 BobPath DriveForwardThreeFeet = new BobPath(config, "DriveForwardThreeFeet", false);
