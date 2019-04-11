@@ -15,6 +15,7 @@ import frc.robot.commands.CargoAcutate;
 import frc.robot.commands.FireHatchExtender;
 import frc.robot.commands.FireHatchGrabber;
 import frc.robot.commands.RunElevatorManual;
+import frc.robot.commands.VacOnOff;
 import frc.robot.commands.ZeroElevator;
 import frc.robot.commands.ZeroVac;
 
@@ -43,6 +44,9 @@ public class OI {
 
 		JoystickButton zeroVac = new JoystickButton(DriveJoystick, 7);
 		zeroVac.whenPressed(new ZeroVac());
+
+		JoystickButton pumpsOnOff = new JoystickButton(DriveJoystick, 4);
+		pumpsOnOff.toggleWhenPressed(new VacOnOff());
 
 
 		//JoystickButton vacMidPos = new JoystickButton(DriveJoystick, 6);
@@ -97,20 +101,25 @@ public class OI {
 	}
 
 	public double GetClimberAxis(){
-		return DriveJoystick.getRawAxis(5);
+		return -DriveJoystick.getRawAxis(5);
 	}
 	public double GetElevatorAxis(){
 		return operatorStick.getRawAxis(1);
 	}
 
 	public boolean vacuumClimberOverride(){
-		return DriveJoystick.getRawButton(8);
+		return DriveJoystick.getRawButton(6);
 	}
 
 
 	public double GetCargoThrottle(){
-		double reverse = operatorStick.getRawAxis(RobotMap.throttleForwardAxis);
-	   	double forward = operatorStick.getRawAxis(RobotMap.throttleReverseAxis);
+<<<<<<< HEAD
+	   	double reverse = operatorStick.getRawAxis(3);
+		double forward = operatorStick.getRawAxis(2);
+=======
+		double reverse = operatorStick.getRawAxis(3);
+	   	double forward = operatorStick.getRawAxis(2);
+>>>>>>> a14abfb84202bf566e3afc4251baf65b3e811ba3
 		if ((reverse > .1) && (forward >.1)){
 			return 0;
 		}
@@ -136,6 +145,11 @@ public class OI {
 	public boolean getLowPosition(){
 
 		return DriveJoystick.getRawButton(5);
+
+	}
+	public boolean pixy2LineDrive(){
+
+		return DriveJoystick.getRawButton(2);
 
 	}
 }

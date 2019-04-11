@@ -9,7 +9,7 @@
       "name": "CodeLens (Launch) - BobPathCreator",
       "request": "launch",
       "mainClass": "frc.robot.BobPathCreator",
-      "projectName": "FRC-2019"
+      "projectName": "FRC 2019"
     },
     {
       "type": "wpilib",

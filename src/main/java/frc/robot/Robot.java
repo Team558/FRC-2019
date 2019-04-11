@@ -19,7 +19,6 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.subsystems.Camera;
 import frc.robot.subsystems.CargoDetector;
 import frc.robot.subsystems.CargoIntake;
 import frc.robot.subsystems.CargoTater;
@@ -28,8 +27,6 @@ import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Elevator;
 import frc.robot.subsystems.HatchExtender;
 import frc.robot.subsystems.HatchGrabber;
-import frc.robot.subsystems.Pixy1Cam;
-import frc.robot.subsystems.Pixy2Handler;
 import frc.robot.subsystems.VacuumClimber;
 import frc.robot.subsystems.VacuumPump;
 import frc.robot.subsystems.VacuumSensor;
@@ -41,8 +38,6 @@ public class Robot extends TimedRobot {
   public static VacuumClimber climber = new VacuumClimber();
   public static VacuumPump pump = new VacuumPump();
   public static VacuumSensor transducer = new VacuumSensor();
-  public static Pixy2Handler pixy2Handler = new Pixy2Handler();
-  public static Pixy1Cam pixy = new Pixy1Cam();
   public static Elevator elevator = new Elevator();
   public static HatchExtender hatchExtender = new HatchExtender();
   public static HatchGrabber hatchGrabber = new HatchGrabber();
@@ -71,7 +66,12 @@ public class Robot extends TimedRobot {
     camera.setBrightness(40);
     camera.setFPS(20); //10 or 20
 
-    Camera.setup();
+<<<<<<< HEAD
+=======
+    //Camera.setup();
+
+    
+>>>>>>> a14abfb84202bf566e3afc4251baf65b3e811ba3
 
     drivetrain.setRampRate();
   }
@@ -80,12 +80,21 @@ public class Robot extends TimedRobot {
   @Override
   public void robotPeriodic() {
 
-    Camera.run();
+<<<<<<< HEAD
+=======
+    //Camera.run();
+
+    
+>>>>>>> a14abfb84202bf566e3afc4251baf65b3e811ba3
     SmartDashboard.putNumber("Elevator Encoder", Robot.elevator.GetElevatorEncoder());
     SmartDashboard.putNumber("Elevator Encoder2", Robot.elevator.GetElevatorEncoder());
     SmartDashboard.putNumber("Climber Encoder", Robot.climber.readVacEncoder());
     SmartDashboard.putBoolean("Cargo Detector", Robot.cargoDetector.readSensor());
     SmartDashboard.putNumber("Transducer Pressure", Robot.transducer.getAveragePressure());
+    //SmartDashboard.putNumber("pixy offset", Robot.pixy.getLastOffset());
+    //SmartDashboard.putNumber("DX", Robot.pixy2Handler.getDx());
+    //SmartDashboard.putNumber("Theta", Robot.pixy2Handler.getTheta());
+    //Robot.pixy.read();
   }
 
   
@@ -119,6 +128,7 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousPeriodic() {
     Scheduler.getInstance().run();
+    //Robot.pixy.read();
     this.CompressorHandler();
   }
 
@@ -135,10 +145,14 @@ public class Robot extends TimedRobot {
     Scheduler.getInstance().run();
     this.CompressorHandler();
     SmartDashboard.putNumber("Elevator Encoder", Robot.elevator.GetElevatorEncoder());
-    SmartDashboard.putNumber("Elevator Encoder2", Robot.elevator.GetElevatorEncoder());
-    SmartDashboard.putNumber("Right Drive Encoder", Robot.drivetrain.readRightEncoder());
-    SmartDashboard.putNumber("Left Drive Encoder", Robot.drivetrain.readLeftEncoder());
+    SmartDashboard.putNumber("Vac Motor Output", Robot.climber.MotorOutputClimber());
+<<<<<<< HEAD
+    SmartDashboard.putNumber("Climber Encoder", Robot.climber.readVacEncoder());
+=======
+    SmartDashboard.putNumber("pixy offset", Robot.pixy.getLastOffset());
+    //Robot.pixy.read();
     
+>>>>>>> a14abfb84202bf566e3afc4251baf65b3e811ba3
   }
 
   @Override

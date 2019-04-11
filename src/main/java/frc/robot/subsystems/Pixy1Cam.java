@@ -141,11 +141,11 @@ public ArrayList<PixyBlock> read(){
     
     else{
       
-      setLastOffset(160); //Keeps robot going straight if only one signal is picked up
+      setLastOffset(118); //Keeps robot going straight if only one signal is picked up
       
         }
   } else{
-    setLastOffset(160); //Keeps robot going straight if nothing is picked up
+    setLastOffset(118); //Keeps robot going straight if nothing is picked up
     setInRange(false);
   }
   return pixyBlocks;
