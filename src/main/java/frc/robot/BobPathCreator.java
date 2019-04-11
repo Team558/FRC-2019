@@ -63,7 +63,7 @@ public class BobPathCreator extends AbstractBobPathCreator {
 		 BobPath TurnScaling = new BobPath(config, "TurnScaling", false);
 		 TurnScaling.addWaypoint(startingPoint);
 		 TurnScaling.addWaypointRelative(3, 3, 89.99);
-		 return asList (TurnScaling); // return asList(path1, path2, path3, ...);*/
+		 return asList (nate); // return asList(path1, path2, path3, ...);*/
 	}
 	public static void main(String[] args) {
 		new BobPathCreator().generatePaths();
