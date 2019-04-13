@@ -61,8 +61,6 @@ public class OI {
 			
 		DriveJoystick.setRumble(GenericHID.RumbleType.kLeftRumble, rumble);
 		DriveJoystick.setRumble(GenericHID.RumbleType.kRightRumble, rumble);
-		operatorStick.setRumble(GenericHID.RumbleType.kLeftRumble, rumble);
-		operatorStick.setRumble(GenericHID.RumbleType.kRightRumble, rumble);
 	
 	}
 
@@ -87,6 +85,20 @@ public class OI {
 		}
 		else
 			return 0;
+	}
+	public void limelightRumble(){
+
+		if(Robot.limeLight.isTarget() == 1 || Robot.transducer.getAveragePressure() <= -10){
+
+			Robot.m_oi.setrumble(.6);
+	  
+		  }
+		  else{
+	  
+			Robot.m_oi.setrumble(0);
+	  
+		  }
+
 	}
 
 	
@@ -142,7 +154,7 @@ public class OI {
 		return DriveJoystick.getRawButton(5);
 
 	}
-	public boolean pixy2LineDrive(){
+	public boolean limeLightAutoDrive(){
 
 		return DriveJoystick.getRawButton(2);
 

@@ -32,15 +32,28 @@ public class ElmCityDrive extends Command {
   protected void execute() {
 
     double wheelNonLinearity;
-    double limeError = -Robot.limeLight.getHorizontal();
-    double limeKP = .02;
+    double limeError = -(Robot.limeLight.getHorizontal()) - 1;
+    double limeKP = .024;
     double driverKP = 1;
     boolean getLimeDrive = Robot.m_oi.GetPixyDrive();
+    //boolean getLimeAutoDrive = Robot.m_oi.limeLightAutoDrive();
+    //double limeDistanceError = (Robot.limeLight.getDistance()-15);
+    //double limeDistanceKP = .015;
+    //double throttle;
     double wheel;
-    
+
+    /*if(getLimeAutoDrive){
+
+      wheel = (limeError*limeKP);
+      throttle = limeDistanceError*limeDistanceKP;
+
+
+
+    }*/
     if(getLimeDrive){
      // Robot.limeLight.setLEDMode(3);
       wheel = (limeError*limeKP)+(driverKP*(handleDeadband(Robot.m_oi.GetTurn(), wheelDeadband)));
+      //throttle = Robot.m_oi.GetThrottle();
 
 
     }
@@ -48,9 +61,11 @@ public class ElmCityDrive extends Command {
       
      // Robot.limeLight.setLEDMode(1);
       wheel = handleDeadband(Robot.m_oi.GetTurn(), wheelDeadband);
+      //throttle = Robot.m_oi.GetThrottle();
 
     }
   
+      
       
       double throttle = Robot.m_oi.GetThrottle();
 

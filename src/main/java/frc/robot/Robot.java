@@ -82,10 +82,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Climber Encoder", Robot.climber.readVacEncoder());
     SmartDashboard.putBoolean("Cargo Detector", Robot.cargoDetector.readSensor());
     SmartDashboard.putNumber("Transducer Pressure", Robot.transducer.getAveragePressure());
-    //SmartDashboard.putNumber("pixy offset", Robot.pixy.getLastOffset());
-    //SmartDashboard.putNumber("DX", Robot.pixy2Handler.getDx());
-    //SmartDashboard.putNumber("Theta", Robot.pixy2Handler.getTheta());
-    //Robot.pixy.read();
+    //SmartDashboard.putNumber("Limelight Distance", Robot.limeLight.getDistance());
   }
 
   
@@ -96,14 +93,16 @@ public class Robot extends TimedRobot {
   @Override
   public void disabledPeriodic() {
     Scheduler.getInstance().run();
+    Robot.limeLight.setLEDMode(1);
     Robot.pump.stopPumps();
+    Robot.m_oi.setrumble(0);
   }
 
   
   @Override
   public void autonomousInit() {
     m_autonomousCommand = m_chooser.getSelected();
-
+    Robot.limeLight.setLEDMode(3);
     camera.setResolution(320,240); //640x480 or 500x375
     camera.setPixelFormat(PixelFormat.kMJPEG);
     camera.setBrightness(40);
@@ -121,6 +120,9 @@ public class Robot extends TimedRobot {
     Scheduler.getInstance().run();
     //Robot.pixy.read();
     this.CompressorHandler();
+
+    Robot.m_oi.limelightRumble();
+
   }
 
   @Override
@@ -128,6 +130,7 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
+    limeLight.setLEDMode(3);
     drivetrain.setRampRate();
   }
 
@@ -138,6 +141,9 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Elevator Encoder", Robot.elevator.GetElevatorEncoder());
     SmartDashboard.putNumber("Vac Motor Output", Robot.climber.MotorOutputClimber());
     SmartDashboard.putNumber("Climber Encoder", Robot.climber.readVacEncoder());
+    SmartDashboard.putNumber("LimeLight Area", Robot.limeLight.getArea());
+
+    Robot.m_oi.limelightRumble();
   }
 
   @Override

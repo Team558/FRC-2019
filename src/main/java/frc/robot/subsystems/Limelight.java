@@ -53,6 +53,12 @@ public void setPipeline(double value){
 public void setStream(double value){
   NetworkTableInstance.getDefault().getTable("limelight").getEntry("stream").setNumber(value);
 }
+/*public double getDistance(){
+  double x = getArea();
+  double y = (-1.656*Math.log(x) + 6.0243);
+  return (y * 12);
+
+}*/
   @Override
   public void initDefaultCommand() {
   }
