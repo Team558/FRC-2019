@@ -81,7 +81,7 @@ public class VacuumClimber extends Subsystem {
 
   public void runClimber(double speed){
     climber.set(ControlMode.PercentOutput, speed);
-   // climberSlave.set(ControlMode.PercentOutput, speed);
+    //climberSlave.set(ControlMode.PercentOutput, speed);
   }
 
 
