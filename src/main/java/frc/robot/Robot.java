@@ -68,6 +68,7 @@ public class Robot extends TimedRobot {
     camera.setBrightness(40);
     camera.setFPS(20); //10 or 20
 
+    Robot.climber.rampRateClimber();
     this.limeLight.setStream(0);
 
     drivetrain.setRampRate();
@@ -108,6 +109,7 @@ public class Robot extends TimedRobot {
     camera.setBrightness(40);
     camera.setFPS(20); //10 or 20
 
+    climber.rampRateClimber();
     drivetrain.setRampRate();
   
     if (m_autonomousCommand != null) {
@@ -132,6 +134,7 @@ public class Robot extends TimedRobot {
     }
     limeLight.setLEDMode(3);
     drivetrain.setRampRate();
+    climber.rampRateClimber();
   }
 
   @Override

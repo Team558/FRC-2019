@@ -61,6 +61,15 @@ public class VacuumClimber extends Subsystem {
 
   }
 
+  public void rampRateClimber(){
+
+    climber.configOpenloopRamp(.2);
+    climberSlave.configOpenloopRamp(.2);
+
+    climber.configClosedloopRamp(.2);
+    climberSlave.configClosedloopRamp(.2);
+
+  }
   public void GoToTarget(double encoderPos){
 
     climber.set(ControlMode.MotionMagic, encoderPos);

@@ -76,6 +76,12 @@ public class Elevator extends Subsystem {
     elevatorLeader.configMotionCruiseVelocity(3250);
     elevatorLeader.configMotionAcceleration(9750);
 
+    elevatorLeader.configClosedloopRamp(.2);
+    elevatorFollower.configClosedloopRamp(.2);
+    
+    elevatorLeader.configOpenloopRamp(.2);
+    elevatorFollower.configClosedloopRamp(.2);
+
   }
   public double motorOutput(){
 
