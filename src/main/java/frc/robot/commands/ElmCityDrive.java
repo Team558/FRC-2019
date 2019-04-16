@@ -22,7 +22,6 @@ public class ElmCityDrive extends Command {
   public ElmCityDrive() {
       // Use requires() here to declare subsystem dependencies
       requires(Robot.drivetrain);
-      requires(Robot.pixy);
       
   }
 
