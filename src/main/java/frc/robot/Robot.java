@@ -29,12 +29,11 @@ public class Robot extends TimedRobot {
   public static VacuumPump pump = new VacuumPump();
   public static VacuumSensor transducer = new VacuumSensor();
   public static Elevator elevator = new Elevator();
-  public static Pixy2Handler pixy2Handler = new Pixy2Handler();
+  
   public static HatchExtender hatchExtender = new HatchExtender();
   public static HatchGrabber hatchGrabber = new HatchGrabber();
   public static CargoTater cargoTater = new CargoTater();
   public static CargoDetector cargoDetector = new CargoDetector();
-  public static Pixy1Cam pixy = new Pixy1Cam();
   public static Digit digitBoard = Digit.getInstance();
   public static UsbCamera camera = null;
 
@@ -58,18 +57,13 @@ public class Robot extends TimedRobot {
       camera.setPixelFormat(PixelFormat.kMJPEG);
       camera.setBrightness(40);
       camera.setFPS(20); //10 or 20
-
-      Camera.setup();
-          //}
   }
 
   
   @Override
   public void robotPeriodic() {
-    Camera.run();
     
-    SmartDashboard.putNumber("DX", Robot.pixy2Handler.getDx());
-    SmartDashboard.putNumber("Theta", Robot.pixy2Handler.getTheta());
+    
     
   }
 
@@ -144,9 +138,8 @@ public class Robot extends TimedRobot {
     //this.CompressorHandler();
     this.transducerHandler();
     this.CompressorHandler();
-    pixy.read();
 
-    SmartDashboard.putNumber("Pixy Offset", pixy.getLastOffset());
+    
     
     SmartDashboard.putNumber("Elevator Encoder", Robot.elevator.GetCurrentPosition());
     SmartDashboard.putNumber("Right Drive Encoder", Robot.drivetrain.readRightEncoder());
