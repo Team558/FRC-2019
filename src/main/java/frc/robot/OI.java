@@ -74,17 +74,17 @@ public class OI {
 		   	double forward = DriveJoystick.getRawAxis(RobotMap.throttleReverseAxis);
 
 		    	
-		    	if ((reverse > .1) && (forward >.1)){
+		    	if ((reverse > .02) && (forward > 0.02)){
 		    		return 0;
 		    	}
-		    	else if (forward > .1){
+		    	else if (forward > 0){
 					return forward;
 				}
-				else if (reverse > .1){
+				else if (reverse > 0){
 		    		return -reverse;
 		    	}
 		    	else
-		    		return 0;
+		    		return forward;
 			}
 
 			

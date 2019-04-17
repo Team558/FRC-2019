@@ -17,6 +17,7 @@ public class ElmCityDrive extends Command {
   private double oldWheel = 0.0;
   private double quickStopAccumulator;
   private double wheelDeadband = 0.1;
+  private double throttleDeadband = 0.1;
   private double pixyWheelDeadband = .01;
 
   public ElmCityDrive() {
@@ -46,7 +47,7 @@ public class ElmCityDrive extends Command {
    
 
 
-      double throttle = Robot.m_oi.GetThrottle();
+      double throttle = handleDeadband(Robot.m_oi.GetThrottle(), throttleDeadband);
 
       double negInertia = wheel - oldWheel;
       oldWheel = wheel;
@@ -143,11 +144,36 @@ public class ElmCityDrive extends Command {
         rightPwm = -1.0;
       }
 
+     if (Math.abs(linearPower) < 0.05) {
+        
+      Robot.drivetrain.drive(leftPwm+.01, rightPwm+.01);
+     }
+     else{
       Robot.drivetrain.drive(leftPwm, rightPwm);
+
+     }
+
   }
     
   public double handleDeadband(double val, double deadband) {
-      return (Math.abs(val) > Math.abs(deadband)) ? val : 0.0;
+      if(val > -deadband && val < deadband){
+
+        return 0;
+
+      }
+      else if(val > 0){
+
+        double scaledInput = (val - deadband)/(1 - deadband);
+        return scaledInput;
+
+      }
+
+      else{
+
+        double scaledInput = (val + deadband)/(1 -  deadband);
+        return scaledInput;
+
+      }
     }
 
   // Make this return true when this Command no longer needs to run execute()

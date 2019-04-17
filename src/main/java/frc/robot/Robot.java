@@ -139,17 +139,13 @@ public class Robot extends TimedRobot {
     this.transducerHandler();
     this.CompressorHandler();
 
-    
-    
+    SmartDashboard.putNumber("Wheel", Robot.m_oi.GetTurn());
+    SmartDashboard.putNumber("Throttle", Robot.m_oi.GetThrottle());
+    SmartDashboard.putNumber("rightDrivePercent", Robot.drivetrain.rightMotorOutput());
+    SmartDashboard.putNumber("leftDrivePercent", Robot.drivetrain.leftMotorOutput());
     SmartDashboard.putNumber("Elevator Encoder", Robot.elevator.GetCurrentPosition());
     SmartDashboard.putNumber("Right Drive Encoder", Robot.drivetrain.readRightEncoder());
     SmartDashboard.putNumber("Left Drive Encoder", Robot.drivetrain.readLeftEncoder());
-    SmartDashboard.putBoolean("Cargo Detector", Robot.cargoDetector.readSensor());
-    SmartDashboard.putNumber("climber Encoder", climber.readVacEncoder());
-    SmartDashboard.putNumber("Transducer Voltage", transducer.getAverageVoltage());
-    SmartDashboard.putNumber("Transducer Pressure", transducer.getAveragePressure());
-    SmartDashboard.putNumber("Climber Velocity", climber.readVacEncoderVel());
-
  
   }
 

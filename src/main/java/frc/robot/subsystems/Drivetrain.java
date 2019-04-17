@@ -66,6 +66,16 @@ public class Drivetrain extends Subsystem {
     return rightLeader.getSelectedSensorPosition();
 
   }
+  public double leftMotorOutput(){
+
+    return leftLeader.getMotorOutputPercent();
+
+  }
+  public double rightMotorOutput(){
+
+    return rightLeader.getMotorOutputPercent();
+
+  }
 
   @Override
   public void initDefaultCommand() {
