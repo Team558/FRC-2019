@@ -29,7 +29,7 @@ public class Robot extends TimedRobot {
   public static VacuumPump pump = new VacuumPump();
   public static VacuumSensor transducer = new VacuumSensor();
   public static Elevator elevator = new Elevator();
-  
+  public static Limelight limeLight = new Limelight();
   public static HatchExtender hatchExtender = new HatchExtender();
   public static HatchGrabber hatchGrabber = new HatchGrabber();
   public static CargoTater cargoTater = new CargoTater();

@@ -17,8 +17,8 @@ public class ElmCityDrive extends Command {
   private double oldWheel = 0.0;
   private double quickStopAccumulator;
   private double wheelDeadband = 0.1;
-  private double pixyWheelDeadband = .01;
 
+  
   public ElmCityDrive() {
       // Use requires() here to declare subsystem dependencies
       requires(Robot.drivetrain);
@@ -33,20 +33,39 @@ public class ElmCityDrive extends Command {
   protected void execute() {
     
     double wheelNonLinearity;
-    boolean isPixyDrive = Robot.m_oi.GetPixyDrive();
-    boolean isPixy2Drive = Robot.m_oi.pixy2LineDrive();
+    double limeError = -(Robot.limeLight.getHorizontal()) - 1;
+    double limeKP = .024;
+    double driverKP = 1;
+    boolean getLimeDrive = Robot.m_oi.GetPixyDrive();
+    boolean getLimeAutoDrive = Robot.m_oi.limeLightAutoDrive();
+    double limeDistanceError = (Robot.limeLight.getDistance()-15);
+    double limeDistanceKP = .015;
+    double throttle;
     double wheel;
-    
-  //else{
 
-    wheel = handleDeadband(Robot.m_oi.GetTurn(), wheelDeadband);
-
-  //}
+    if(getLimeAutoDrive){
+      wheel = (limeError*limeKP);
+      throttle = limeDistanceError*limeDistanceKP;
+    }
+    if(getLimeDrive){
+       Robot.limeLight.setLEDMode(3);
+       wheel = (limeError*limeKP)+(driverKP*(handleDeadband(Robot.m_oi.GetTurn(), wheelDeadband)));
+       throttle = Robot.m_oi.GetThrottle();
+ 
+ 
+     }
+     else{
+       
+       Robot.limeLight.setLEDMode(1);
+       wheel = handleDeadband(Robot.m_oi.GetTurn(), wheelDeadband);
+       throttle = Robot.m_oi.GetThrottle();
+ 
+     }
  
    
 
 
-      double throttle = Robot.m_oi.GetThrottle();
+      //double throttle = Robot.m_oi.GetThrottle();
 
       double negInertia = wheel - oldWheel;
       oldWheel = wheel;
