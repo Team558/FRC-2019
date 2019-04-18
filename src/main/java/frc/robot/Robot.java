@@ -130,6 +130,7 @@ public class Robot extends TimedRobot {
       m_autonomousCommand.cancel();
     }
     transducer.turnOnDucer();
+    limeLight.setPipeline(0);
   }
 
   @Override
@@ -138,7 +139,9 @@ public class Robot extends TimedRobot {
     //this.CompressorHandler();
     this.transducerHandler();
     this.CompressorHandler();
+    limeLight.setLEDMode(3);
 
+    SmartDashboard.putNumber("LimeHorizontal", Robot.limeLight.getHorizontal());
     SmartDashboard.putNumber("Wheel", Robot.m_oi.GetTurn());
     SmartDashboard.putNumber("Throttle", Robot.m_oi.GetThrottle());
     SmartDashboard.putNumber("rightDrivePercent", Robot.drivetrain.rightMotorOutput());

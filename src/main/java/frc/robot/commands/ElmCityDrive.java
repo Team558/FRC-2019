@@ -35,34 +35,58 @@ public class ElmCityDrive extends Command {
   protected void execute() {
     
     double wheelNonLinearity;
-    double limeError = -(Robot.limeLight.getHorizontal()) - 1;
+    double limeError = (Robot.limeLight.getHorizontal());
     double limeKP = .024;
     double driverKP = 1;
     boolean getLimeDrive = Robot.m_oi.GetPixyDrive();
-    boolean getLimeAutoDrive = Robot.m_oi.limeLightAutoDrive();
-    double limeDistanceError = (Robot.limeLight.getDistance()-15);
+    boolean jesusIsTakeTheWheelMode = Robot.m_oi.limeLightAutoDrive();
+    boolean getLimeCargo = Robot.m_oi.limeLightCargo();
+    boolean getLimeCargoAuto = Robot.m_oi.limeLightCargoAuto();
+    double limeDistanceError = -(Robot.limeLight.getDistance()-15);
     double limeDistanceKP = .015;
+    double limeCargoKP= .024;
     double throttle;
     double wheel;
 
-    if(getLimeAutoDrive){
+
+    if(jesusIsTakeTheWheelMode){
       wheel = (limeError*limeKP);
+      Robot.limeLight.setPipeline(0);
       throttle = limeDistanceError*limeDistanceKP;
     }
-    if(getLimeDrive){
-       Robot.limeLight.setLEDMode(3);
+    
+    else if(getLimeDrive){
+       //Robot.limeLight.setLEDMode(3);
+       Robot.limeLight.setPipeline(0);
        wheel = (limeError*limeKP)+(driverKP*(handleDeadband(Robot.m_oi.GetTurn(), wheelDeadband)));
        throttle = Robot.m_oi.GetThrottle();
  
- 
      }
-     else{
+
+    else if(getLimeCargo){
+
+      Robot.limeLight.setPipeline(1);
+      wheel = (limeError*limeCargoKP)+(driverKP*(handleDeadband(Robot.m_oi.GetTurn(), wheelDeadband)));
+      throttle = Robot.m_oi.GetThrottle();
+
+    }
+    else if(getLimeCargoAuto){
+
+      Robot.limeLight.setPipeline(0);
+      wheel = (limeError*limeCargoKP)+(driverKP*(handleDeadband(Robot.m_oi.GetTurn(), wheelDeadband)));
+      //throttle = 
+
+
+    }
+
+    else{
        
-       Robot.limeLight.setLEDMode(1);
+       //Robot.limeLight.setLEDMode(1);
+       Robot.limeLight.setPipeline(0);
        wheel = handleDeadband(Robot.m_oi.GetTurn(), wheelDeadband);
        throttle = Robot.m_oi.GetThrottle();
  
-     }
+    }
  
    
 

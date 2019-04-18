@@ -145,4 +145,14 @@ public class OI {
 				return DriveJoystick.getRawButton(2);
 		
 			}
+			public boolean limeLightCargo(){
+
+				return DriveJoystick.getRawButton(4);
+
+			}
+			public boolean limeLightCargoAuto(){
+
+				return DriveJoystick.getRawButton(3);
+
+			}
 }

@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Limelight extends Subsystem {
 
+
   public double isTarget(){
     return NetworkTableInstance.getDefault().getTable("limelight").getEntry("tv").getDouble(0);
   }
@@ -48,7 +49,7 @@ public class Limelight extends Subsystem {
     NetworkTableInstance.getDefault().getTable("limelight").getEntry("pipeline").setNumber(value);
   }
   
-  public void setStream(double value){
+  public void setStream(int value){
     NetworkTableInstance.getDefault().getTable("limelight").getEntry("stream").setNumber(value);
   }
   public double getDistance(){
