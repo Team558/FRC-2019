@@ -74,7 +74,7 @@ public class ElmCityDrive extends Command {
 
       Robot.limeLight.setPipeline(0);
       wheel = (limeError*limeCargoKP)+(driverKP*(handleDeadband(Robot.m_oi.GetTurn(), wheelDeadband)));
-      //throttle = 
+      throttle = Robot.m_oi.GetThrottle(); 
 
 
     }
