@@ -139,15 +139,12 @@ public class OI {
 		else
 			return 0;
 	}
-
-
-	public boolean GetPixyDrive(){
-		return DriveJoystick.getRawButton(1);
-	}
 	public boolean getMidPosition(){
 
 		return DriveJoystick.getRawButton(6);
-
+	}
+	public boolean GetPixyDrive(){
+		return DriveJoystick.getRawButton(1);
 	}
 	public boolean getLowPosition(){
 
@@ -157,6 +154,16 @@ public class OI {
 	public boolean limeLightAutoDrive(){
 
 		return DriveJoystick.getRawButton(2);
+
+	}
+	public boolean limeLightCargo(){
+
+		return DriveJoystick.getRawButton(4);
+
+	}
+	public boolean limeLightCargoAuto(){
+
+		return DriveJoystick.getRawButton(3);
 
 	}
 }

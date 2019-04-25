@@ -14,7 +14,7 @@ public class VacMidPos extends Command {
   public VacMidPos() {
 
     requires(Robot.climber);
-    setTimeout(2);
+    setTimeout(2.5);
 
   }
 
@@ -27,14 +27,14 @@ public class VacMidPos extends Command {
   @Override
   protected void execute() {
 
-    Robot.climber.GoToTarget(-40500);
+    Robot.climber.GoToTarget(-42500);
 
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return (Robot.climber.readVacEncoder() == -40480 || isTimedOut());
+    return (Robot.climber.readVacEncoder() == -42480 || isTimedOut());
   }
 
   // Called once after isFinished returns true

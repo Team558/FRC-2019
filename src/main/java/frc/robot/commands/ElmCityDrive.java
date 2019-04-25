@@ -32,42 +32,57 @@ public class ElmCityDrive extends Command {
   protected void execute() {
 
     double wheelNonLinearity;
-    double limeError = -(Robot.limeLight.getHorizontal()) - 1;
+    double limeError = (Robot.limeLight.getHorizontal());
     double limeKP = .024;
     double driverKP = 1;
     boolean getLimeDrive = Robot.m_oi.GetPixyDrive();
-    //boolean getLimeAutoDrive = Robot.m_oi.limeLightAutoDrive();
-    //double limeDistanceError = (Robot.limeLight.getDistance()-15);
-    //double limeDistanceKP = .015;
-    //double throttle;
+    boolean jesusIsTakeTheWheelMode = Robot.m_oi.limeLightAutoDrive();
+    boolean getLimeCargo = Robot.m_oi.limeLightCargo();
+    boolean getLimeCargoAuto = Robot.m_oi.limeLightCargoAuto();
+    double limeDistanceError = -(Robot.limeLight.getDistance()-15);
+    double limeDistanceKP = .015;
+    double limeCargoKP= .024;
+    double throttle;
     double wheel;
-
-    /*if(getLimeAutoDrive){
-
+    
+    if(jesusIsTakeTheWheelMode){
       wheel = (limeError*limeKP);
+      Robot.limeLight.setPipeline(0);
       throttle = limeDistanceError*limeDistanceKP;
+    }
+    
+    else if(getLimeDrive){
+       //Robot.limeLight.setLEDMode(3);
+       Robot.limeLight.setPipeline(0);
+       wheel = (limeError*limeKP)+(driverKP*(handleDeadband(Robot.m_oi.GetTurn(), wheelDeadband)));
+       throttle = Robot.m_oi.GetThrottle();
+ 
+     }
 
+    else if(getLimeCargo){
 
+      Robot.limeLight.setPipeline(1);
+      wheel = (limeError*limeCargoKP)+(driverKP*(handleDeadband(Robot.m_oi.GetTurn(), wheelDeadband)));
+      throttle = Robot.m_oi.GetThrottle();
 
-    }*/
-    if(getLimeDrive){
-     // Robot.limeLight.setLEDMode(3);
-      wheel = (limeError*limeKP)+(driverKP*(handleDeadband(Robot.m_oi.GetTurn(), wheelDeadband)));
-      //throttle = Robot.m_oi.GetThrottle();
+    }
+    else if(getLimeCargoAuto){
+
+      Robot.limeLight.setPipeline(0);
+      wheel = (limeError*limeCargoKP)+(driverKP*(handleDeadband(Robot.m_oi.GetTurn(), wheelDeadband)));
+      throttle = Robot.m_oi.GetThrottle(); 
 
 
     }
+
     else{
-      
-     // Robot.limeLight.setLEDMode(1);
-      wheel = handleDeadband(Robot.m_oi.GetTurn(), wheelDeadband);
-      //throttle = Robot.m_oi.GetThrottle();
-
+       
+       //Robot.limeLight.setLEDMode(1);
+       Robot.limeLight.setPipeline(0);
+       wheel = handleDeadband(Robot.m_oi.GetTurn(), wheelDeadband);
+       throttle = Robot.m_oi.GetThrottle();
+ 
     }
-  
-      
-      
-      double throttle = Robot.m_oi.GetThrottle();
 
       double negInertia = wheel - oldWheel;
       oldWheel = wheel;
@@ -163,14 +178,37 @@ public class ElmCityDrive extends Command {
         leftPwm += overPower * (-1.0 - rightPwm);
         rightPwm = -1.0;
       }
+      if (Math.abs(linearPower) < 0.05) {
 
-      Robot.drivetrain.drive(leftPwm, rightPwm);
+        Robot.drivetrain.drive(leftPwm+.01, rightPwm+.01);
+       }
+       else{
+        Robot.drivetrain.drive(leftPwm, rightPwm);
+  
+       }
   }
 
     
   public double handleDeadband(double val, double deadband) {
-      return (Math.abs(val) > Math.abs(deadband)) ? val : 0.0;
+    if(val > -deadband && val < deadband){
+
+      return 0;
+
     }
+    else if(val > 0){
+
+      double scaledInput = (val - deadband)/(1 - deadband);
+      return scaledInput;
+
+    }
+
+    else{
+
+      double scaledInput = (val + deadband)/(1 -  deadband);
+      return scaledInput;
+
+    }
+  }
 
   // Make this return true when this Command no longer needs to run execute()
   protected boolean isFinished() {
