@@ -37,14 +37,13 @@ public class ElmCityDrive extends Command {
     double driverKP = 1;
     boolean getLimeDrive = Robot.m_oi.GetPixyDrive();
     boolean jesusIsTakeTheWheelMode = Robot.m_oi.limeLightAutoDrive();
-    boolean getLimeCargo = Robot.m_oi.limeLightCargo();
-    boolean getLimeCargoAuto = Robot.m_oi.limeLightCargoAuto();
+    boolean getLimeCargo = Robot.m_oi.limeLightCargoAuto();
     double limeDistanceError = -(Robot.limeLight.getDistance()-15);
     double limeDistanceKP = .015;
     double limeCargoKP= .024;
     double throttle;
     double wheel;
-    
+
     if(jesusIsTakeTheWheelMode){
       wheel = (limeError*limeKP);
       Robot.limeLight.setPipeline(0);
@@ -64,14 +63,6 @@ public class ElmCityDrive extends Command {
       Robot.limeLight.setPipeline(1);
       wheel = (limeError*limeCargoKP)+(driverKP*(handleDeadband(Robot.m_oi.GetTurn(), wheelDeadband)));
       throttle = Robot.m_oi.GetThrottle();
-
-    }
-    else if(getLimeCargoAuto){
-
-      Robot.limeLight.setPipeline(0);
-      wheel = (limeError*limeCargoKP)+(driverKP*(handleDeadband(Robot.m_oi.GetTurn(), wheelDeadband)));
-      throttle = Robot.m_oi.GetThrottle(); 
-
 
     }
 

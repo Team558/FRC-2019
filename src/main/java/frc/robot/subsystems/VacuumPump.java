@@ -32,6 +32,11 @@ public class VacuumPump extends Subsystem {
     pump1.set(ControlMode.PercentOutput , 0);
    // pump2.set(0);
   }
+  public void PumpRamprate(){
+
+    pump1.configOpenloopRamp(.2);
+
+  }
 
   @Override
   public void initDefaultCommand() {

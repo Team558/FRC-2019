@@ -27,9 +27,9 @@ public class OI {
 	public OI(){
 
 		JoystickButton DuckBillToggle = new JoystickButton(operatorStick, 1);
-        DuckBillToggle.toggleWhenPressed(new FireHatchGrabber());
+    DuckBillToggle.toggleWhenPressed(new FireHatchGrabber());
     
-      	JoystickButton QuackLauncherToggle = new JoystickButton(operatorStick, 2);
+    JoystickButton QuackLauncherToggle = new JoystickButton(operatorStick, 2);
 		QuackLauncherToggle.toggleWhenPressed(new FireHatchExtender());
 
 		JoystickButton elevatorManualMode = new JoystickButton(operatorStick, 8);

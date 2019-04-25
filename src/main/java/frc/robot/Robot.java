@@ -7,9 +7,6 @@
 
 package frc.robot;
 
-import edu.wpi.cscore.UsbCamera;
-import edu.wpi.cscore.VideoMode.PixelFormat;
-import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Relay;
@@ -46,7 +43,6 @@ public class Robot extends TimedRobot {
   public static CargoTater cargoTater = new CargoTater();
   public static Digit digitBoard = Digit.getInstance();
   public static CargoDetector cargoDetector = new CargoDetector();
-  public static UsbCamera camera = null;
 
 
   public static Compressor pcm = new Compressor();
@@ -62,16 +58,12 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     m_oi = new OI();
-    camera = CameraServer.getInstance().startAutomaticCapture();
-    camera.setResolution(320,240); //640x480 or 500x375
-    camera.setPixelFormat(PixelFormat.kMJPEG);
-    camera.setBrightness(40);
-    camera.setFPS(20); //10 or 20
 
     Robot.climber.rampRateClimber();
     this.limeLight.setStream(0);
 
     drivetrain.setRampRate();
+    Robot.pump.PumpRamprate();
   }
 
   
@@ -104,13 +96,10 @@ public class Robot extends TimedRobot {
   public void autonomousInit() {
     m_autonomousCommand = m_chooser.getSelected();
     Robot.limeLight.setLEDMode(3);
-    camera.setResolution(320,240); //640x480 or 500x375
-    camera.setPixelFormat(PixelFormat.kMJPEG);
-    camera.setBrightness(40);
-    camera.setFPS(20); //10 or 20
 
     climber.rampRateClimber();
     drivetrain.setRampRate();
+    Robot.pump.PumpRamprate();
   
     if (m_autonomousCommand != null) {
       m_autonomousCommand.start();
@@ -120,7 +109,6 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousPeriodic() {
     Scheduler.getInstance().run();
-    //Robot.pixy.read();
     this.CompressorHandler();
 
     Robot.m_oi.limelightRumble();
@@ -135,6 +123,7 @@ public class Robot extends TimedRobot {
     limeLight.setLEDMode(3);
     drivetrain.setRampRate();
     climber.rampRateClimber();
+    Robot.pump.PumpRamprate();
   }
 
   @Override
