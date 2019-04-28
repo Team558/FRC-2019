@@ -32,15 +32,15 @@ public class ElmCityDrive extends Command {
   protected void execute() {
 
     double wheelNonLinearity;
-    double limeError = (Robot.limeLight.getHorizontal());
-    double limeKP = .024;
+    double limeError = -(Robot.limeLight.getHorizontal());
+    double limeKP = .03;
     double driverKP = 1;
     boolean getLimeDrive = Robot.m_oi.GetPixyDrive();
     boolean jesusIsTakeTheWheelMode = Robot.m_oi.limeLightAutoDrive();
     boolean getLimeCargo = Robot.m_oi.limeLightCargoAuto();
-    double limeDistanceError = -(Robot.limeLight.getDistance()-15);
+    double limeDistanceError = (Robot.limeLight.getDistance()-15);
     double limeDistanceKP = .015;
-    double limeCargoKP= .024;
+    double limeCargoKP= .03;
     double throttle;
     double wheel;
 

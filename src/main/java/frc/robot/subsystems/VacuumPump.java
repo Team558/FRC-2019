@@ -34,7 +34,7 @@ public class VacuumPump extends Subsystem {
   }
   public void PumpRamprate(){
 
-    pump1.configOpenloopRamp(.2);
+    pump1.configOpenloopRamp(.4);
 
   }
 
